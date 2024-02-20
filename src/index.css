@@ -1,0 +1,22 @@
+@font-face {
+  font-family: 'logo';
+  /* Use the same font-family name as in the Tailwind config */
+  src: url('./assets/fonts/LogoFont/AnotherDanger.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'mons';
+  /* Use the same font-family name as in the Tailwind config */
+  src: url("./assets/fonts/Montserrat\ Font/") format('truetype');
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+  
