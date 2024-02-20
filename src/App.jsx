@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { FetchData } from "./api/api";
+// import { FetchData } from "./api/api";
 
 function App() {
   // const { data, isLoading, isFetching } = useQuery({
