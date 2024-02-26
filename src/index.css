@@ -1,3 +1,6 @@
+/* styles.css */
+@import 'daisyui/dist/full.css';
+
 @font-face {
   font-family: 'logo';
   /* Use the same font-family name as in the Tailwind config */
@@ -7,9 +10,18 @@
 
 @font-face {
   font-family: 'mons';
-  /* Use the same font-family name as in the Tailwind config */
-  src: url("./assets/fonts/Montserrat\ Font/") format('truetype');
+  font-style: normal;
+    font-weight: 500;
+  src: url("./assets/fonts/Montserrat/Montserrat-Medium.ttf") format('truetype');
   font-display: swap;
+}
+
+@font-face {
+    font-family: 'mons'; 
+    font-style: bold;
+    font-weight: 700;
+     src: url("./assets/fonts/Montserrat/Montserrat-Bold.ttf") format('truetype');
+
 }
 
 @tailwind base;
