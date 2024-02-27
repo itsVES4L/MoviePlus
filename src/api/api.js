@@ -1,21 +1,22 @@
 import axios from "axios";
 
+const fetchData = async (endPoint, params) => {
+  const token =
+    "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiMjZiZTAyYzBjOTVlNTU0YTExMzM2NGEyZDM2YTYzMiIsInN1YiI6IjY1YzVlMzc3NTM0NjYxMDE3YjhiNzkyYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.OQEweWswz1ey2eFuFOWc3mZdR2qxU9tW5UMjIl80dLU";
 
-const FetchData = async (endPoint, params) => {
   const options = {
     method: "GET",
     url: `https://api.themoviedb.org/3/${endPoint}`,
     params: params,
     headers: {
       accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiMjZiZTAyYzBjOTVlNTU0YTExMzM2NGEyZDM2YTYzMiIsInN1YiI6IjY1YzVlMzc3NTM0NjYxMDE3YjhiNzkyYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.OQEweWswz1ey2eFuFOWc3mZdR2qxU9tW5UMjIl80dLU",
+      Authorization: `Bearer ${token}`,
     },
   };
-  const res = axios
+
+  const result = axios
     .request(options)
     .then(function (response) {
-    
       return response.data;
     })
     .catch(function (error) {
@@ -23,8 +24,7 @@ const FetchData = async (endPoint, params) => {
       return error;
     });
 
-  return res;
+  return result;
 };
 
-
-export { FetchData };
+export { fetchData };

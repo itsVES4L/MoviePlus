@@ -1,37 +1,33 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
+import { useGetData } from "../hooks";
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
-import { useQuery } from "@tanstack/react-query";
 
-// Import Swiper styles
+//Import Swiper styles
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
-
-import { FetchData } from "../api/api";
-
-// import required modules
-
 const Slider = () => {
+  const imageBaseUrl = "https://image.tmdb.org/t/p/original/";
+
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
-  const { data, isLoading, isFetching } = useQuery({
-    queryKey: ["trending"],
-    queryFn: () => FetchData("/trending/all/day"),
-  });
-
+  const trendingMovieData = useGetData("trending", "/trending/all/day");
+  console.log(trendingMovieData);
+  // ${trendingMovieData.movie.media_type}/${trendingMovieData.movie.id}/video
   return (
-    <div 
-    className="h-[90vh]">
+    <div className="h-[90vh]">
       <Swiper
         style={{
           "--swiper-navigation-color": "#fff",
           "--swiper-pagination-color": "#fff",
         }}
         loop={true}
+        autoplay={{ delay: 5000 }}
         spaceBetween={10}
         thumbs={{
           swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
@@ -39,12 +35,12 @@ const Slider = () => {
         modules={[FreeMode, Navigation, Thumbs]}
         className="mySwiper2"
       >
-        {data?.results.map((movie) => (
+        {trendingMovieData?.data?.results.map((movie) => (
           <SwiperSlide key={movie.id} className="w-screen h-fit ">
             <div className=" sm:h-[90vh]">
               <img
                 className=" w-full h-auto "
-                src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+                src={`${imageBaseUrl}${movie.backdrop_path}`}
                 alt=""
               />
             </div>
@@ -61,22 +57,26 @@ const Slider = () => {
         freeMode={true}
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="fixed"
+        className=""
       >
-        {data?.results.map((movie) => (
-          <SwiperSlide key={movie.id} className="w-screen h-fit ">
-            <div className=" sm:h-[90vh]">
-              <img
-                className=" w-full h-auto "
-                src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                alt=""
-              />
-            </div>
-            <div class="absolute inset-0 w-full h-full z-20 bg-gradient-to-b from-transparent to-darkBlue">
-              {" "}
-            </div>
-          </SwiperSlide>
-        ))}
+        {trendingMovieData?.data?.results.map((movie) => {
+          const endPoint = `${trendingMovieData.movie.media_type}/${trendingMovieData.movie.id}/video`;
+          useGetData("trailer", endPoint);
+          return (
+            <SwiperSlide key={movie.id} className="w-screen h-fit ">
+              <div className=" sm:h-[10vh] ">
+                <img
+                  className=" w-full h-auto "
+                  src={`${movie.poster_path}`}
+                  alt=""
+                />
+              </div>
+              <div class="absolute inset-0 w-full h-full z-20 bg-gradient-to-b from-transparent to-darkBlue">
+                {" "}
+              </div>
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </div>
   );
