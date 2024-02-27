@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useGetData } from "../hooks";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import { FreeMode, Navigation, Thumbs , Autoplay } from "swiper/modules";
 
 //Import Swiper styles
 import "swiper/css";
@@ -17,32 +17,36 @@ const Slider = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   const trendingMovieData = useGetData("trending", "/trending/all/day");
-  console.log(trendingMovieData);
-  // ${trendingMovieData.movie.media_type}/${trendingMovieData.movie.id}/video
+ 
   return (
-    <div className="h-[90vh]">
+    <div className="h-[90vh] relative">
       <Swiper
-        style={{
-          "--swiper-navigation-color": "#fff",
-          "--swiper-pagination-color": "#fff",
-        }}
+
         loop={true}
-        autoplay={{ delay: 5000 }}
+         autoplay={{
+          delay: 4000,
+          disableOnInteraction: false,
+        }}
         spaceBetween={10}
         thumbs={{
           swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
         }}
-        modules={[FreeMode, Navigation, Thumbs]}
+        modules={[FreeMode, Navigation, Thumbs,Autoplay]}
         className="mySwiper2"
       >
         {trendingMovieData?.data?.results.map((movie) => (
           <SwiperSlide key={movie.id} className="w-screen h-fit ">
-            <div className=" sm:h-[90vh]">
+            <div className=" sm:h-[90vh] relative">
               <img
                 className=" w-full h-auto "
                 src={`${imageBaseUrl}${movie.backdrop_path}`}
                 alt=""
               />
+              <div className="absolute bottom-5 left-10  z-30">
+                <h1 className="font-bold text-3xl">{ movie.media_type === 'movie' ? movie.title : movie.name}</h1>
+                <br />
+                <p className="w-[40vw] h-[96px] line-clamp-4">{movie.overview}</p>
+              </div>
             </div>
             <div class="absolute inset-0 w-full h-full z-20 bg-gradient-to-b from-transparent to-darkBlue">
               {" "}
@@ -50,34 +54,7 @@ const Slider = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <Swiper
-        onSwiper={setThumbsSwiper}
-        spaceBetween={10}
-        slidesPerView={4}
-        freeMode={true}
-        watchSlidesProgress={true}
-        modules={[FreeMode, Navigation, Thumbs]}
-        className=""
-      >
-        {trendingMovieData?.data?.results.map((movie) => {
-          const endPoint = `${trendingMovieData.movie.media_type}/${trendingMovieData.movie.id}/video`;
-          useGetData("trailer", endPoint);
-          return (
-            <SwiperSlide key={movie.id} className="w-screen h-fit ">
-              <div className=" sm:h-[10vh] ">
-                <img
-                  className=" w-full h-auto "
-                  src={`${movie.poster_path}`}
-                  alt=""
-                />
-              </div>
-              <div class="absolute inset-0 w-full h-full z-20 bg-gradient-to-b from-transparent to-darkBlue">
-                {" "}
-              </div>
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
+    
     </div>
   );
 };
