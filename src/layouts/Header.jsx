@@ -17,7 +17,7 @@ const Header = () => {
       <div className="mr-2 sm:mr-10 relative flex w-fit h-fit items-center ">
         <SearchIcon className='absolute z-40 ml-1 ' fontSize="small"/>
         <input
-          className="text-[10px] p-2 sm:px-8 text-center  outline-none rounded-lg  backdrop-blur-lg bg-[#2020208c] "
+          className="text-[10px] sm:p-2 p-1.5 w-6 sm:px-8 text-center  outline-none rounded-lg  backdrop-blur-lg bg-[#2020208c] "
           type="text"
           placeHolder="search"
         />
