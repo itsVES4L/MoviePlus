@@ -19,7 +19,7 @@ const Slider = () => {
   const trendingMovieData = useGetData("trending", "/trending/all/day");
  
   return (
-    <div className="h-[90vh] relative">
+    <div className="h-[90vh] relative  bottom-[70px]">
       <Swiper
 
         loop={true}
@@ -34,7 +34,7 @@ const Slider = () => {
         modules={[FreeMode, Navigation, Thumbs,Autoplay]}
         className="mySwiper2"
       >
-        {trendingMovieData?.data?.results.map((movie) => (
+        {trendingMovieData?.data?.results?.map((movie) => (
           <SwiperSlide key={movie.id} className="w-screen h-fit ">
             <div className=" sm:h-[90vh] relative">
               <img
@@ -42,10 +42,10 @@ const Slider = () => {
                 src={`${imageBaseUrl}${movie.backdrop_path}`}
                 alt=""
               />
-              <div className="absolute bottom-5 sm:left-10 left-5  z-30">
+              <div className="absolute bottom-10 sm:left-10 left-5  z-30">
                 <h1 className="font-bold sm:text-3xl w-[40vw] line-clamp-1 text-[15px]">{ movie.media_type === 'movie' ? movie.title : movie.name}</h1>
                 
-                <p className="sm:w-[40vw] w-[60vw] sm:h-[96px] mt-2 text-[10px] line-clamp-4">{movie.overview}</p>
+                <p className="sm:w-[40vw] w-[60vw]  sm:h-[70px] mt-2 sm:text-[15px] text-[10px] sm:line-clamp-3 line-clamp-2">{movie.overview}</p>
               </div>
             </div>
             <div class="absolute inset-0 w-full h-full z-20 bg-gradient-to-b from-transparent to-darkBlue">

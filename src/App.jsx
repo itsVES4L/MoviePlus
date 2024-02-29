@@ -7,9 +7,11 @@ import { Header, Footer, Body } from "./layouts";
 function App() {
   
   return (
-    <div className={`bg-darkBlue font-mons w-screen h-screen text-white`}>
+    <div className={`bg-darkBlue overflow-x-hidden  overscroll-y-none font-mons w-screen h-screen text-white`}>
       <Header />
       <Body />
+     <div className="h-[3000px]"></div>
+
       {/* <Swiperr/> */}
       {/* 
       <Footer /> */}

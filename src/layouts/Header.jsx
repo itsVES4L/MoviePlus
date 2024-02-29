@@ -1,9 +1,9 @@
 import React from "react";
-import { SearchPage } from "../pages";
+import SearchIcon from "@mui/icons-material/Search";
 
 const Header = () => {
   return (
-    <div className="w-screen flex items-center justify-between absolute z-10">
+    <div className="w-screen flex items-center sticky top-0 justify-between sm:sticky z-10">
       {/* <--Logo--> */}
       <div className="w-fit  text-[10px] cursor-pointer sm:text-[15px] p-2 sm:p-4  ">
         <p className="relative ">
@@ -14,9 +14,14 @@ const Header = () => {
         </p>
       </div>
       {/* <-/-Logo--> */}
-      {/* <div className="mr-10 glass p-2 ">
-       <button className=" btn btn-accent btn-outline"> search for movie </button>
-      </div> */}
+      <div className="mr-2 sm:mr-10 relative flex w-fit h-fit items-center ">
+        <SearchIcon className='absolute z-40 ml-1 ' fontSize="small"/>
+        <input
+          className="text-[10px] p-2 sm:px-8 text-center  outline-none rounded-lg  backdrop-blur-lg bg-[#2020208c] "
+          type="text"
+          placeHolder="search"
+        />
+      </div>
     </div>
   );
 };
