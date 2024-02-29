@@ -22,7 +22,7 @@ const Header = () => {
           type="text"
           placeHolder="search"
         />
-        <button className=" w-6 h-6 flex justify-center items-center sm:hidden rounded-lg  backdrop-blur-lg bg-[#2020208c] " > 
+        <button className=" w-7 h-7 flex justify-center items-center sm:hidden rounded-lg  backdrop-blur-lg bg-[#2020208c] " > 
         <SearchIcon className='p-1' />
         </button>
       </div>
