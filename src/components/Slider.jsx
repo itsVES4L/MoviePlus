@@ -19,7 +19,7 @@ const Slider = () => {
   const trendingMovieData = useGetData("trending", "/trending/all/day");
  
   return (
-    <div className="h-[90vh] relative  bottom-[70px]">
+    <div className="h-[90vh] relative  sm:bottom-[70px]">
       <Swiper
 
         loop={true}
