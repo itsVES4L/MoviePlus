@@ -16,13 +16,15 @@ const Header = () => {
       </div>
       {/* <-/-Logo--> */}
       <div className="mr-3 sm:mr-10 cursor-pointer  rounded-lg relative flex w-fit h-fit items-center ">
-        <SearchIcon className='absolute z-40 ml-1 ' fontSize="small"/>
+        <SearchIcon className='absolute z-40 ml-1  opacity-0 sm:opacity-100 ' fontSize="small"/>
         <input
           className="text-[10px] p-2 hidden sm:block sm:px-8 text-center  outline-none rounded-lg  backdrop-blur-lg bg-[#2020208c] "
           type="text"
           placeHolder="search"
         />
-        <button className=" w-6 h-6 sm:hidden rounded-lg  backdrop-blur-lg bg-[#2020208c] " > </button>
+        <button className=" w-6 h-6 flex justify-center items-center sm:hidden rounded-lg  backdrop-blur-lg bg-[#2020208c] " > 
+        <SearchIcon className='p-1' />
+        </button>
       </div>
     </div>
   );
