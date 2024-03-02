@@ -1,3 +1,5 @@
-import Slider from "./Slider";
+import Card from "./Card";
+import CardSlider from "./CardSlider";
+import MainSlider from "./MainSlider";
 
-export { Slider}
+export { MainSlider, CardSlider, Card };

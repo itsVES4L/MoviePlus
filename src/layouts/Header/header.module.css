@@ -1,0 +1,11 @@
+.container {
+  background: transparent;
+  animation: scrolling linear;
+  animation-timeline: scroll();
+}
+@keyframes scrolling {
+  to {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+}
