@@ -1,49 +1,58 @@
 import React, { useRef, useState, useEffect } from "react";
-import Card from "./Card";
+import MovieCard from "./MovieCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Navigation, Pagination } from "swiper/modules";
-
-const CardSlider = ({ movies }) => {
-  const [slidesPerView, setSlidesPerView] = useState(7);
-
-  // Update slidesPerView based on screen size
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setSlidesPerView(3); // Set slidesPerView to 3 for mobile
-      } else {
-        setSlidesPerView(7); // Set slidesPerView back to 5 for larger screens
-      }
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []); 
-
+import "./CardSlider.css";
+import { A11y, Navigation, Pagination } from "swiper/modules";
+import {
+  ArrowForwardIosRounded as ArrowNext,
+  ArrowBackIosRounded as ArrowPrev,
+} from "@mui/icons-material";
+const CardSlider = ({ movies, name }) => {
   return (
     <div className="w-screen h-fit">
       <Swiper
-        slidesPerView={slidesPerView}
-       
-        loop={true}
-        spaceBetween={-1}
-        draggable={true}
-        navigation={true}
+        navigation={{
+          nextEl: ".nxt-btn",
+          prevEl: ".prv-btn",
+        }}
         pagination={{
           dynamicBullets: true,
-          clickable: true,
+          // clickable: true,
+          // dynamicMainBullets:true
         }}
+        breakpoints={{
+          768: {
+            slidesPerView: 5,
+          },
+        }}
+        slidesPerView={3}
+        loop={true}
+        spaceBetween={0}
+        draggable={true}
         modules={[Pagination, Navigation]}
-        className="w-[80vw] overflow-hidden"
+        className=" flex justify-center w-[80vw] overflow-hidden pb-0 pt-10"
       >
-        {movies?.data?.results?.slice(0, 10).map((movie) => {
+        <div className=" flex justify-between items-center w-[95%] absolute    rounded-2xl z-40 top-4 sm:top-0">
+          <p className="font-bold sm:text-xl">{name}</p>
+          {/* Navigation buttons */}
+          <div className=" flex gap-5  bg-[#141B1F] p-1  rounded-2xl z-40 ">
+            <button className="prv-btn hover:bg-green w-7 h-7 sm:h-9 sm:w-9 p-0 sm:p-2 flex justify-center items-center rounded-full text-center  ">
+              {" "}
+              <ArrowPrev fontSize="small" />{" "}
+            </button>
+            <button className="nxt-btn  hover:bg-green w-7 h-7 sm:h-9 sm:w-9 p-0 sm:p-2 flex justify-center items-center rounded-full text-center  ">
+              {" "}
+              <ArrowNext fontSize="small" />{" "}
+            </button>
+          </div>
+        </div>
+        {/* Slides */}
+        {movies?.data?.results?.map((movie) => {
           return (
             <SwiperSlide key={movie.id}>
-              <Card movie={movie} />
+              <MovieCard movie={movie} />
             </SwiperSlide>
           );
         })}

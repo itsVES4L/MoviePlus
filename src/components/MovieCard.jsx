@@ -1,13 +1,13 @@
 import React from "react";
 
-const Card = ({ movie }) => {
+const MovieCard = ({ movie }) => {
   const imageBaseUrl = "https://image.tmdb.org/t/p/original/";
  
   return (
     <div className=" bg-darkBlue flex flex-col gap-3 items-center py-8">
       <div className="w-fit h-fit relative">
         <img
-          className="sm:h-[30vh] h-[15vh] rounded-lg"
+          className="sm:h-[40vh] h-[15vh] rounded-lg"
           src={imageBaseUrl + movie.poster_path}
           alt=""
         />
@@ -17,11 +17,11 @@ const Card = ({ movie }) => {
           </div>
         </div>
       </div>
-      <div className="font-[500] text-[13px]  sm:text-[17px] tracking-wider w-32 line-clamp-2 text-center  text-balance " >
+      <div className="font-[500] text-[13px]  sm:text-[17px] tracking-wider w-24 sm:w-32 line-clamp-2 text-center  text-balance " >
         <h1>{movie.title}</h1>
       </div>
     </div>
   );
 };
 
-export default Card;
+export default MovieCard;

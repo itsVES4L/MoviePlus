@@ -4,12 +4,12 @@ import { useGetData } from '../hooks';
 // import { Menu } from '../components';
 
 const Body = () => {
-    const upComingMovie = useGetData("upComingMovie", "/movie/upcoming");
+    const popularMovie = useGetData("Popular Movies", "/movie/popular");
 
     return (
         <div>
             <MainSlider/>
-            <CardSlider movies={upComingMovie}/>
+            <CardSlider name={'Popular Movies'} movies={popularMovie}/>
         </div>
     );
 };
