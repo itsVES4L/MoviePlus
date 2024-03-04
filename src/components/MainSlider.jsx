@@ -36,7 +36,7 @@ const MainSlider = ({data}) => {
         className="relative"
       >
         {data?.data?.results?.map((movie) => (
-          <SwiperSlide key={movie.id} className="w-screen h-fit ">
+          <SwiperSlide key={movie.id} className="w-screen sm:h-[90vh] ">
             <div className=" sm:max-h-[90vh] relative">
               <img
                 className=" w-full h-auto "
