@@ -1,5 +1,6 @@
-import Card from "./MovieCard";
+import MovieCard from "./MovieCard";
 import CardSlider from "./CardSlider";
 import MainSlider from "./MainSlider";
+import PersonCard from "./PersonCard";
 
-export { MainSlider, CardSlider, Card };
+export { MainSlider, CardSlider, MovieCard, PersonCard };

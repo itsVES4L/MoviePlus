@@ -11,12 +11,11 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
-const MainSlider = () => {
+const MainSlider = ({data}) => {
   const imageBaseUrl = "https://image.tmdb.org/t/p/original/";
 
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
-  const trendingMovieData = useGetData("trending", "/trending/all/day");
 
   return (
     <div className="h-fit relative  bottom-[55px] sm:bottom-[70px]">
@@ -36,7 +35,7 @@ const MainSlider = () => {
         modules={[FreeMode, Navigation, Thumbs, Autoplay]}
         className="relative"
       >
-        {trendingMovieData?.data?.results?.map((movie) => (
+        {data?.data?.results?.map((movie) => (
           <SwiperSlide key={movie.id} className="w-screen h-fit ">
             <div className=" sm:max-h-[90vh] relative">
               <img

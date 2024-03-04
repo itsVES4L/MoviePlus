@@ -4,12 +4,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "./CardSlider.css";
-import { A11y, Navigation, Pagination } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import {
   ArrowForwardIosRounded as ArrowNext,
   ArrowBackIosRounded as ArrowPrev,
 } from "@mui/icons-material";
-const CardSlider = ({ movies, name }) => {
+import PersonCard from "./PersonCard";
+const CardSlider = ({ data, name, dataType }) => {
   return (
     <div className="w-screen h-fit">
       <Swiper
@@ -28,7 +29,7 @@ const CardSlider = ({ movies, name }) => {
           },
         }}
         slidesPerView={3}
-        loop={true}
+        // loop={true}
         spaceBetween={0}
         draggable={true}
         modules={[Pagination, Navigation]}
@@ -49,12 +50,28 @@ const CardSlider = ({ movies, name }) => {
           </div>
         </div>
         {/* Slides */}
-        {movies?.data?.results?.map((movie) => {
-          return (
-            <SwiperSlide key={movie.id}>
-              <MovieCard movie={movie} />
-            </SwiperSlide>
-          );
+        {data?.data?.results?.map((item) => {
+          if (dataType === "movie") {
+            return (
+              <SwiperSlide key={item.id}>
+                <MovieCard movie={item} dataType={dataType} />
+              </SwiperSlide>
+            );
+          } ;
+          if (dataType === "tv") {
+            return (
+              <SwiperSlide key={item.id}>
+                <MovieCard movie={item} dataType={dataType} />
+              </SwiperSlide>
+            );
+
+          } ; if (dataType === "person") {
+            return (
+              <SwiperSlide key={item.id}>
+                <PersonCard person={item} dataType={dataType} />
+              </SwiperSlide>
+            );
+          } ;
         })}
       </Swiper>
     </div>
