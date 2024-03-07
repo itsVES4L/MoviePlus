@@ -1,16 +1,17 @@
 import React, { useRef, useState, useEffect } from "react";
-import MovieCard from "./MovieCard";
+import MovieCard from "../Cards/MovieCard";
 import { Swiper, SwiperSlide } from "swiper/react";
+import PersonCard from "../Cards/PersonCard";
 import "swiper/css";
 import "swiper/css/pagination";
 import "./CardSlider.css";
-import { Navigation, Pagination } from "swiper/modules";
+import { FreeMode, Navigation, Pagination } from "swiper/modules";
 import {
   ArrowForwardIosRounded as ArrowNext,
   ArrowBackIosRounded as ArrowPrev,
 } from "@mui/icons-material";
-import PersonCard from "./PersonCard";
 const CardSlider = ({ data, name, dataType }) => {
+
   return (
     <div className="w-screen h-fit">
       <Swiper
@@ -20,8 +21,7 @@ const CardSlider = ({ data, name, dataType }) => {
         }}
         pagination={{
           dynamicBullets: true,
-          // clickable: true,
-          // dynamicMainBullets:true
+          
         }}
         breakpoints={{
           768: {
@@ -32,7 +32,7 @@ const CardSlider = ({ data, name, dataType }) => {
         // loop={true}
         spaceBetween={0}
         draggable={true}
-        modules={[Pagination, Navigation]}
+        modules={[Pagination, Navigation, FreeMode]}
         className=" flex justify-center w-[80vw] overflow-hidden pb-0 pt-10"
       >
         <div className=" flex justify-between items-center w-[95%] absolute    rounded-2xl z-40 top-4 sm:top-0">
@@ -57,21 +57,22 @@ const CardSlider = ({ data, name, dataType }) => {
                 <MovieCard movie={item} dataType={dataType} />
               </SwiperSlide>
             );
-          } ;
+          }
           if (dataType === "tv") {
             return (
               <SwiperSlide key={item.id}>
                 <MovieCard movie={item} dataType={dataType} />
               </SwiperSlide>
             );
-
-          } ; if (dataType === "person") {
+          }
+          if (dataType === "person") {
+            console.log(item);
             return (
               <SwiperSlide key={item.id}>
                 <PersonCard person={item} dataType={dataType} />
               </SwiperSlide>
             );
-          } ;
+          }
         })}
       </Swiper>
     </div>

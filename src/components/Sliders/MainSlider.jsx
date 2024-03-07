@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useGetData } from "../hooks";
+import { useGetData } from "../../hooks";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -12,7 +12,6 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
 const MainSlider = ({data}) => {
-  const imageBaseUrl = "https://image.tmdb.org/t/p/original/";
 
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
@@ -23,7 +22,7 @@ const MainSlider = ({data}) => {
         pagination={{
           dynamicBullets: true,
         }}
-        loop={true}
+        // loop={true}
         autoplay={{
           delay: 4000,
           disableOnInteraction: false,

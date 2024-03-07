@@ -21,7 +21,6 @@ const fetchData = async (endPoint, params) => {
     })
     .catch(function (error) {
       console.error(error);
-      return error;
     });
 
   return result;

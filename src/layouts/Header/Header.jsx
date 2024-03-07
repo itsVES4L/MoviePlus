@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
-import styles from './header.module.css'
+import styles from "./header.module.css";
 const Header = () => {
   return (
     <div
@@ -16,18 +16,15 @@ const Header = () => {
         </p>
       </div>
       {/* <-/-Logo--> */}
-      <div className="mr-3 sm:mr-10 cursor-pointer  rounded-lg relative flex w-fit h-fit z-30  items-center ">
-        <SearchIcon
-          className="absolute z-40 ml-1  opacity-0 sm:opacity-100 "
-          fontSize="small"
-        />
-        <input
-          className="text-[10px] p-2 hidden sm:block sm:px-8 text-center  outline-none rounded-lg  backdrop-blur-lg bg-[#2020208c] "
-          type="text"
-          placeholder="search"
-        />
-        <button className=" w-7 h-7 flex justify-center items-center sm:hidden rounded-lg  backdrop-blur-lg bg-[#2020208c] ">
+      <div className="mr-3 sm:mr-10 cursor-pointer  rounded-lg relative flex  w-fit h-fit z-30  items-center ">
+        <button
+          className=" w-7 h-7 flex justify-center sm:justify-start items-center sm:w-32
+         rounded-lg  text-center   hover:border
+          hover:border-green backdrop-blur-lg bg-[#2020208c] "
+        >
           <SearchIcon className="p-1" />
+          <span className=" hidden sm:block 
+          ml-6 text-[10px] text-[#8b7777]">Search</span>
         </button>
       </div>
     </div>
