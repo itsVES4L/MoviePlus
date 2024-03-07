@@ -12,7 +12,7 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
 const MainSlider = ({data}) => {
-
+  const imageBaseUrl = "https://image.tmdb.org/t/p/original/";
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
 

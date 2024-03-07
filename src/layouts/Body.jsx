@@ -4,7 +4,7 @@ import { HomePage, SearchPage } from "../pages";
 const Body = () => {
   return (
     <>
-      <SearchPage />;
+      <HomePage />;
     </>
   );
 };

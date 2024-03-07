@@ -4,6 +4,7 @@ import { CardSlider, MainSlider } from "../components";
 import Loader from "../components/common/Loader";
 
 const HomePage = () => {
+  const imageBaseUrl = "https://image.tmdb.org/t/p/original/";
   const popularMovie = useGetData("Popular Movies", "/movie/popular");
   const popularPerson = useGetData("Popular Person", "/person/popular");
   const popularTV = useGetData("Popular TV", "/tv/popular");

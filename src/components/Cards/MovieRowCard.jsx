@@ -22,10 +22,12 @@ const MovieRowCard = ({ data }) => {
   }, [data]);
 
   return (
-    <div className="w-[80vw] h-[46vh] rounded-xl relative bg-blackShade sm:p-5 p-7  flex  flex-col sm:flex-row  justify-center sm:justify-normal items-center sm:items-normal  gap-8">
+    <div className=":w-[80vw] sm:h-[46vh]
+    h-fit
+    rounded-xl relative bg-blackShade sm:p-5 p-7  flex  flex-col sm:flex-row    gap-8">
       {/* poster */}
      
-        <Poster imageUrl={data?.poster_path} vote={data?.vote_average} />
+        <Poster bgColor={'bg-blackShade'} imageUrl={data?.poster_path} vote={data?.vote_average} />
     
 
       {/* details */}
@@ -41,7 +43,7 @@ const MovieRowCard = ({ data }) => {
           </p>
         </div>
         {/* Title, genre and overview */}
-        <div className="py-4 ml-10 sm:ml-0">
+        <div className="py-4 ml-1 sm:ml-0">
           {/* title */}
           <p className="sm:text-[30px] line-clamp-1 sm:w-[400px]  font-bold">
             {" "}

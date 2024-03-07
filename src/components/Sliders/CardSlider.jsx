@@ -11,7 +11,6 @@ import {
   ArrowBackIosRounded as ArrowPrev,
 } from "@mui/icons-material";
 const CardSlider = ({ data, name, dataType }) => {
-
   return (
     <div className="w-screen h-fit">
       <Swiper
@@ -21,14 +20,13 @@ const CardSlider = ({ data, name, dataType }) => {
         }}
         pagination={{
           dynamicBullets: true,
-          
         }}
         breakpoints={{
           768: {
             slidesPerView: 5,
           },
         }}
-        slidesPerView={3}
+        slidesPerView={dataType === "person" ? 3 : 2}
         // loop={true}
         spaceBetween={0}
         draggable={true}
