@@ -48,8 +48,8 @@ const SearchPage = () => {
         <input
           value={movieName}
           onChange={changeHandler}
-          className=" backdrop:blur-xl
-             bg-[#3b323262] sm:p-3  p-2 pl-6 rounded-2xl outline-none focus:outline-green  w-[80vw]"
+          className=" backdrop:blur-xl 
+             bg-blackShade sm:p-3  p-2 pl-6 rounded-2xl outline-none focus:outline-green  w-[80vw]"
           type="text"
           placeholder="Search movie by name :"
         />

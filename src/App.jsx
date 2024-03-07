@@ -5,12 +5,10 @@ import { useEffect, useState } from "react";
 function App() {
   return (
     <div
-      className={`bg-darkBlue overflow-x-hidden font-mons w-screen h-screen text-white scroll-smooth`}
+      className={` bg-darkBlue  gap-5 overflow-x-hidden font-mons w-screen h-screen text-white scroll-smooth`}
     >
       <Header />
       <Body />
-
-      
       <Footer />
     </div>
   );
