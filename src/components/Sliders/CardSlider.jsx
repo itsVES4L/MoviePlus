@@ -1,15 +1,19 @@
 import React, { useRef, useState, useEffect } from "react";
 import MovieCard from "../Cards/MovieCard";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import PersonCard from "../Cards/PersonCard";
+import { FreeMode, Navigation, Pagination } from "swiper/modules";
+
 import "swiper/css";
 import "swiper/css/pagination";
 import "./CardSlider.css";
-import { FreeMode, Navigation, Pagination } from "swiper/modules";
+
 import {
   ArrowForwardIosRounded as ArrowNext,
   ArrowBackIosRounded as ArrowPrev,
 } from "@mui/icons-material";
+
 const CardSlider = ({ data, name, dataType }) => {
   return (
     <div className="w-screen h-fit">
@@ -64,7 +68,6 @@ const CardSlider = ({ data, name, dataType }) => {
             );
           }
           if (dataType === "person") {
-            console.log(item);
             return (
               <SwiperSlide key={item.id}>
                 <PersonCard person={item} dataType={dataType} />

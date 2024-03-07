@@ -36,9 +36,10 @@ const MainSlider = ({data}) => {
       >
         {data?.data?.results?.map((movie) => (
           <SwiperSlide key={movie.id} className="w-screen sm:h-[90vh] ">
-            <div className=" sm:max-h-[90vh] relative">
+            <div className=" sm:max-h-[90vh]
+            overflow-hidden relative">
               <img
-                className=" w-full h-auto "
+                className=" w-auto h-auto "
                 src={`${imageBaseUrl}${movie.backdrop_path}`}
                 alt=""
               />

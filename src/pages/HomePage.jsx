@@ -15,7 +15,7 @@ const HomePage = () => {
     { data: popularTV, name: "Popular TV", dataType: "tv" },
     { data: popularPerson, name: "Popular Person", dataType: "person" },
   ];
-  console.log(Data);
+
 
   if (
     trendingMovieData.isLoading &&
