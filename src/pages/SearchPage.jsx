@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { MovieRowCard, Loader } from "../components";
+import { MovieRowCard, Loader, Breadcrumbs } from "../components";
 
 const SearchPage = () => {
   const [movieName, setMovieName] = useState(null);
@@ -41,15 +41,18 @@ const SearchPage = () => {
 
   useEffect(searchHandler, [movieName]);
 
-  console.log(movieName, data.results);
+
   return (
     <div>
+      <div className="ml-10">
+      <Breadcrumbs address={['Search']} />
+      </div>
       <div className="w-screen flex justify-center mt-10">
         <input
           value={movieName}
           onChange={changeHandler}
           className=" backdrop:blur-xl 
-             bg-blackShade sm:p-3  p-2 pl-6 rounded-2xl outline-none focus:outline-green  w-[80vw]"
+             bg-blackShade sm:p-3  p-2 pl-6 rounded-xl outline-none focus:outline-green  w-[80vw]"
           type="text"
           placeholder="Search movie by name :"
         />
