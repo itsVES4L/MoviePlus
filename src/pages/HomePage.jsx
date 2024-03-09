@@ -4,24 +4,20 @@ import { CardSlider, MainSlider } from "../components";
 import Loader from "../components/common/Loader";
 
 const HomePage = () => {
-  const imageBaseUrl = "https://image.tmdb.org/t/p/original/";
   const popularMovie = useGetData("Popular Movies", "/movie/popular");
+  const trendingMovie = useGetData("trending Movies", "/trending/movie/day");
+
   const popularPerson = useGetData("Popular Person", "/person/popular");
   const popularTV = useGetData("Popular TV", "/tv/popular");
+  const trendingTV = useGetData("trending TV", "/trending/tv/day");
+
   const trendingMovieData = useGetData("trending", "/trending/all/day");
 
-  const Data = [
-    { data: popularMovie, name: "Popular Movie", dataType: "movie" },
-    { data: popularTV, name: "Popular TV", dataType: "tv" },
-    { data: popularPerson, name: "Popular Person", dataType: "person" },
-  ];
-
-
   if (
-    trendingMovieData.isLoading &&
-    !trendingMovieData.isError &&
-    popularMovie.isLoading &&
-    popularTV.isLoading
+    (trendingMovieData.isLoading &&
+      popularMovie.isLoading &&
+      popularTV.isLoading) ||
+    trendingMovieData.isError
   ) {
     return <Loader />;
   } else {
@@ -29,16 +25,34 @@ const HomePage = () => {
       <>
         <div>
           <MainSlider data={trendingMovieData} />
-          {Data.map((item) => {
-            return (
-              <CardSlider
-                key={item.name}
-                name={item.name}
-                data={item.data}
-                dataType={item.dataType}
-              />
-            );
-          })}
+
+          <CardSlider
+            name={"Popular Movie"}
+            data={popularMovie}
+            dataType={"movie"}
+          />
+          <CardSlider
+            name={"Trending Movies"}
+            data={trendingMovie}
+            dataType={"movie"}
+            isBackdrop={true}
+          />
+          <CardSlider
+            name={"Popular Series"}
+            data={popularTV}
+            dataType={"tv"}
+          />
+          <CardSlider
+            name={"Trending Series"}
+            data={trendingTV}
+            dataType={"tv"}
+            isBackdrop={true}
+          />
+          <CardSlider
+            name={"Popular Person"}
+            data={popularPerson}
+            dataType={"person"}
+          />
         </div>
       </>
     );
