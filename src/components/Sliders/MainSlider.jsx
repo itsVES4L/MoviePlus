@@ -38,11 +38,11 @@ const MainSlider = ({ data }) => {
           <SwiperSlide key={movie.id} className="w-screen sm:h-[90vh] ">
             <Link to={`/details/${movie.media_type}/${movie.id}`}>
               <div
-                className="flex w-screen justify-center items-center sm:max-h-[90vh]
+                className="flex w-screen justify-center sm:block items-center sm:max-h-[90vh]
                     overflow-hidden relative"
               >
                 <img
-                  className=" min-w-[200vw] h-[70vh] sm:w-auto sm:h-auto  "
+                  className=" min-w-[200vw] h-[70vh] sm:min-w-[100vw] sm:h-auto  "
                   src={`${imageBaseUrl}${movie.backdrop_path}`}
                   alt=""
                 />
