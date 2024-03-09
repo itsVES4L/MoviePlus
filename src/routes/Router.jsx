@@ -9,8 +9,6 @@ const Router = () => {
       <Route path="/search" element={<SearchPage />} />
       <Route path="/details/:type/:id" element={<DetailsPage />} />
       <Route path="*" element={<Error404Page />} />
-
-
     </Routes>
   );
 };

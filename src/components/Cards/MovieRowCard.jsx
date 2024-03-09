@@ -4,23 +4,13 @@ import Poster from "../common/Poster";
 import StarIcon from "@mui/icons-material/StarRounded";
 import DateIcon from "@mui/icons-material/InsertInvitationRounded";
 import { Link } from "react-router-dom";
+import { useGetGenres } from "../../hooks";
 
-const MovieRowCard = ({ data , type }) => {
+const MovieRowCard = ({ data, type }) => {
   const dataType = data.media_type || type;
-  console.log(data);
 
-  const [genres, setGenres] = useState([]);
-  const getGenres = useGetData("genres", `genre/${dataType}/list`)?.data
-    ?.genres;
-
-  useEffect(() => {
-    if (!data.genre_ids || !getGenres) return;
-
-    const filteredGenres = getGenres.filter((genre) =>
-      data.genre_ids.includes(genre.id)
-    );
-    setGenres(filteredGenres);
-  }, [data, getGenres]);
+  //
+  const genres = useGetGenres(dataType, data);
 
   return (
     <Link to={`/details/${data.media_type}/${data.id}`}>

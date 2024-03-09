@@ -7,6 +7,12 @@
   src: url('./assets/fonts/LogoFont/AnotherDanger.ttf') format('truetype');
   font-display: swap;
 }
+.staatliches-regular {
+  font-family: "Staatliches", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
 
 @font-face {
   font-family: 'mons';

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 function App() {
   return (
     <div
-      className={` bg-darkBlue  gap-5 overflow-x-hidden font-mons w-screen h-screen text-white scroll-smooth`}
+      className={` bg-darkBlue  relative overflow-x-hidden font-mons w-screen h-screen text-white scroll-smooth`}
     >
       <Header />
       <Body />

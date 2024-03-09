@@ -9,10 +9,10 @@ const Header = () => {
     >
       {/* <--Logo--> */}
       <Link to={'/'} className="w-fit z-30   text-[8px] cursor-pointer sm:text-[15px] p-2 sm:p-4  ">
-        <p className="relative ">
+        <p className="relative font-bold   ">
           <span className="absolute top-[-1px] sm:top-[-13px] w-fit ">The</span>
           <span className="font-bold flex text-lg sm:text-3xl justify-center items-center">
-            Movie <span className="font-bold text-green text-3xl "> +</span>
+            Movie <span className="font-bold text-green text-2xl  ml-0"> +</span>
           </span>{" "}
         </p>
       </Link>

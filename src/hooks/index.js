@@ -1,3 +1,4 @@
 import useGetData from "./useGetData";
+import useGetGenres from "./useGetGenres";
 
-export { useGetData };
+export { useGetData ,useGetGenres};

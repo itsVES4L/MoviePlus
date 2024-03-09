@@ -3,7 +3,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import InstagramIcon from "@mui/icons-material/Instagram";
 const Footer = () => {
   return (
-    <div className=" w-screen rounded-tl-[10%]  bg-blackShade border-t border-[#8efaa086] sm:rounded-tr-[40%] rounded-tr-[10%] flex flex-col sm:flex-row justify-center items-center sm:justify-evenly  ">
+    <div className=" w-screen rounded-tl-[10%]  bg-blackShade border-t border-[#8efaa086] sm:rounded-tr-[40%] rounded-tr-[10%] flex flex-col sm:flex-row justify-center items-center sm:justify-evenly z-40  ">
       <div className="w-screen p-10 gap-10   z-60 h-fit flex justify-around flex-col sm:flex-row items-center text-[#ffffff85]">
         {/* social media */}
         <div className="flex sm:flex-col gap-5">
