@@ -28,7 +28,7 @@ const CardSlider = ({ data, name, dataType, isBackdrop }) => {
         }}
         breakpoints={{
           768: {
-            slidesPerView: isBackdrop ? 2.20 : 4,
+            slidesPerView: isBackdrop ? 2.20 : 3.5,
           },
           1024:{
             slidesPerView: isBackdrop ? 2.20 : 5,
