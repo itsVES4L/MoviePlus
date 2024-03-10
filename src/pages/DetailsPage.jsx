@@ -27,7 +27,7 @@ const DetailsPage = () => {
         <div className="h-fit w-screen overflow-hidden relative flex flex-col items-center ">
           <div className="w-screen overflow-hidden">
             <img
-              className="sm:min-w-[100vw] h-[60vh] sm:h-[90vh] min-w-[120vw]"
+              className="sm:min-w-[100vw] h-[40vh] sm:h-[90vh] min-w-[120vw]"
               src={imageBaseUrl + data?.backdrop_path}
               alt=""
             />
