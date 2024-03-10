@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useGetData } from "../hooks";
 import { Breadcrumbs, Loader } from "../components";
 
 import { playIcon } from "../assets/icons";
 import formatBudget from "../helper/formatBudget";
+import { ArrowBack } from "@mui/icons-material";
 const DetailsPage = () => {
   const imageBaseUrl = "https://image.tmdb.org/t/p/original/";
   const params = useParams();
   const id = params.id;
   const type = params.type;
+  const navigate = useNavigate();
   // const budget = formatBudget(data.budget);
   const { data, isFetching } = useGetData(
     "movieDetails",
@@ -24,9 +26,16 @@ const DetailsPage = () => {
   if (data) {
     return (
       <div className="bg-darkBlue w-screen h-screen absolute z-0 top-0 flex flex-col items-center ">
-        <div className="absolute top-14 z-50 sm:left-[-60px] left-[5px]">
-
-        <Breadcrumbs  address={["details", data?.name || data?.title]} />
+        <button
+          onClick={() => {
+            navigate(-1);
+          }}
+          className="absolute top-12 z-50  left-10 sm:hidden  rounded-xl p-3 text-center bg-[#9c9b9b50] backdrop-blur-sm  "
+        >
+          <ArrowBack />
+        </button>
+        <div className="absolute top-14 z-50 sm:left-[-60px] left-[5px] sm:block hidden">
+          <Breadcrumbs address={[type, data?.name || data?.title]} />
         </div>
         <div className="h-fit w-screen overflow-hidden relative flex flex-col items-center ">
           <div className="w-screen overflow-hidden">
