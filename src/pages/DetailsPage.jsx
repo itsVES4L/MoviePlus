@@ -40,7 +40,7 @@ const DetailsPage = () => {
         <div className="h-fit w-screen overflow-hidden relative flex flex-col items-center ">
           <div className="w-screen overflow-hidden">
             <img
-              className="lg:min-w-[100vw] h-[40vh] lg:h-[90vh] min-w-[120vw]"
+              className="lg:min-w-[100vw] h-[40vh] md:h-[80vh] lg:h-[90vh] min-w-[120vw]"
               src={imageBaseUrl + data?.backdrop_path}
               alt=""
             />
@@ -49,7 +49,7 @@ const DetailsPage = () => {
             </div>
           </div>
         </div>
-        <div className="z-50 absolute lg:bottom-0 bottom-[10vh]   w-[80vw]  ">
+        <div className="z-50  absolute lg:bottom-0 bottom-[10vh] md:bottom-[-30vh]   w-[80vw]  ">
           <div className="flex flex-col ">
             <h1 className="lg:text-[60px] text-[40px] leading-[0.75] font-[Staatliches] text-center lg:text-start ">
               {data?.name || data?.title}
@@ -74,7 +74,7 @@ const DetailsPage = () => {
             className="w-full mt-8 flex flex-row
              lg:gap-10 gap-5 flex-wrap lg:flex-nowrap"
           >
-            <div className="bg-[#ffffff15] backdrop-blur-[4px] rounded-3xl font-[Staatliches]  flex-grow lg:w-[15vw] lg:h-[20vh] w-[30vw] h-[10vh]   flex justify-center items-center relative text-white text-3xl ">
+            <div className="bg-[#ffffff15] backdrop-blur-[4px] rounded-3xl font-[Staatliches] md:h-[20vh] flex-grow lg:w-[15vw] lg:h-[20vh] w-[30vw] h-[10vh]   flex justify-center items-center relative text-white text-3xl ">
               <p className="lg:text-[12px] text-[10px] absolute lg:bottom-0  bottom-0 text-[#ffffff73] font-bold font-mons">
                 RATING
               </p>
@@ -82,7 +82,7 @@ const DetailsPage = () => {
                 {data?.vote_average?.toFixed(1)}
               </h1>
             </div>
-            <div className="bg-[#ffffff15] backdrop-blur-[4px] rounded-3xl  font-[Staatliches] flex-grow lg:w-[15vw] lg:h-[20vh] w-[30vw] h-[10vh]  flex justify-center items-center relative text-white text-3xl ">
+            <div className="bg-[#ffffff15] backdrop-blur-[4px] rounded-3xl  font-[Staatliches] md:h-[20vh] flex-grow lg:w-[15vw] lg:h-[20vh] w-[30vw] h-[10vh]  flex justify-center items-center relative text-white text-3xl ">
               <p className="lg:text-[12px] text-[10px] absolute lg:bottom-0  bottom-0 text-[#ffffff73] font-bold font-mons">
                 RELEASE
               </p>
@@ -91,7 +91,7 @@ const DetailsPage = () => {
                   data?.first_air_date?.slice(0, 7)}
               </h1>
             </div>
-            <div className="bg-[#ffffff15] backdrop-blur-[4px] rounded-3xl lg:w-[15vw] lg:h-[20vh] w-[30vw] h-[10vh] font-[Staatliches] flex-grow   flex justify-center items-center relative text-white text-3xl ">
+            <div className="bg-[#ffffff15] backdrop-blur-[4px] rounded-3xl lg:w-[15vw] lg:h-[20vh] w-[30vw] md:h-[20vh] h-[10vh] font-[Staatliches] flex-grow   flex justify-center items-center relative text-white text-3xl ">
               <p className="lg:text-[12px] text-[10px] absolute lg:bottom-0  bottom-0 text-[#ffffff73] font-bold font-mons">
                 {data?.budget !== undefined ? "BUDGET" : "EPISODES"}
               </p>
@@ -101,7 +101,7 @@ const DetailsPage = () => {
                   : data.number_of_episodes}
               </h1>
             </div>
-            <div className="bg-[#ffffff15] backdrop-blur-[4px] flex-grow rounded-3xl  font-[Staatliches]  lg:w-[15vw] lg:h-[20vh] w-[30vw] h-[10vh] flex justify-center items-center relative text-white lg:text-3xl ">
+            <div className="bg-[#ffffff15] backdrop-blur-[4px] flex-grow rounded-3xl  font-[Staatliches] md:h-[20vh]  lg:w-[15vw] lg:h-[20vh] w-[30vw] h-[10vh] flex justify-center items-center relative text-white lg:text-3xl ">
               <p className="lg:text-[12px] text-[10px] absolute lg:bottom-0  bottom-2 text-[#ffffff73] font-bold font-mons ">
                 LENGTH
               </p>
@@ -109,7 +109,7 @@ const DetailsPage = () => {
                 {data?.runtime || data.episode_run_time[0] || "?"}min
               </h1>
             </div>
-            <div className="bg-green rounded-3xl lg:w-[15vw] lg:h-[20vh] w-[30vw] h-[10vh] flex  flex-grow justify-center items-center relative text-white text-3xl ">
+            <div className="bg-green rounded-3xl lg:w-[15vw] lg:h-[20vh] w-[30vw] h-[10vh] flex  md:h-[20vh] flex-grow justify-center items-center relative text-white text-3xl ">
               <img className="lg:w-12 w-8" src={playIcon} />
             </div>
           </div>
