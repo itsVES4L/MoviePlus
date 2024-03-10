@@ -42,7 +42,7 @@ const MainSlider = ({ data }) => {
                     overflow-hidden relative"
               >
                 <img
-                  className=" min-w-[200vw] h-[70vh] sm:min-w-[100vw] sm:h-auto  "
+                  className=" min-w-[200vw] h-[50vh] sm:min-w-[100vw] sm:h-auto  "
                   src={`${imageBaseUrl}${movie.backdrop_path}`}
                   alt=""
                 />
