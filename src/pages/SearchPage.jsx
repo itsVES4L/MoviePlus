@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { MovieRowCard, Loader, Breadcrumbs } from "../components";
+import { Header } from "../layouts";
 
 const SearchPage = () => {
   const [movieName, setMovieName] = useState("");
@@ -43,6 +44,8 @@ const SearchPage = () => {
 
   return (
     <div>
+      <Header />
+
       <div className="ml-10">
         <Breadcrumbs address={["Search"]} />
       </div>

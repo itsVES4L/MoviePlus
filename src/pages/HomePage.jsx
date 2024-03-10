@@ -2,6 +2,7 @@ import React from "react";
 import { useGetData } from "../hooks";
 import { CardSlider, MainSlider } from "../components";
 import Loader from "../components/common/Loader";
+import { Header } from "../layouts";
 
 const HomePage = () => {
   const popularMovie = useGetData("Popular Movies", "/movie/popular");
@@ -23,7 +24,8 @@ const HomePage = () => {
   } else {
     return (
       <>
-        <div>
+        <div className="relative">
+          <Header />
           <MainSlider data={trendingMovieData} />
 
           <CardSlider

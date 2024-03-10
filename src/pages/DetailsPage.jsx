@@ -30,17 +30,17 @@ const DetailsPage = () => {
           onClick={() => {
             navigate(-1);
           }}
-          className="absolute top-12 z-50  left-10 lg:hidden  rounded-xl p-3 text-center bg-[#9c9b9b50] backdrop-blur-sm  "
+          className="absolute top-6 z-50  left-6 lg:hidden  rounded-xl p-3 text-center bg-[#9c9b9b50] backdrop-blur-sm  "
         >
           <ArrowBack />
         </button>
-        <div className="absolute top-14 z-50 lg:left-[-60px] left-[5px] lg:block hidden">
+        <div className="absolute top-8 z-50 lg:left-[-60px] left-[5px] lg:block hidden">
           <Breadcrumbs address={[type, data?.name || data?.title]} />
         </div>
         <div className="h-fit w-screen overflow-hidden relative flex flex-col items-center ">
           <div className="w-screen overflow-hidden">
             <img
-              className="lg:min-w-[100vw] h-[40vh] md:h-[80vh] lg:h-[90vh] min-w-[120vw]"
+              className="lg:min-w-[100vw] h-[40vh] md:h-[80vh] lg:h-[95vh] min-w-[120vw]"
               src={imageBaseUrl + data?.backdrop_path}
               alt=""
             />

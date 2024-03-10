@@ -1,3 +1,3 @@
 import playIcon from "./playIcon.svg";
-
-export {playIcon}
+import Logo from "./Logo.svg";
+export { playIcon, Logo };

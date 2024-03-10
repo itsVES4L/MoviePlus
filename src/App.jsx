@@ -7,7 +7,6 @@ function App() {
     <div
       className={` bg-darkBlue  relative overflow-x-hidden font-mons w-screen h-screen text-white scroll-smooth`}
     >
-      <Header />
       <Body />
       <Footer />
     </div>
