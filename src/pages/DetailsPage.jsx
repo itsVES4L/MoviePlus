@@ -1,21 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useGetData } from "../hooks";
 import { Breadcrumbs, CardSlider, Loader } from "../components";
 
 import { playIcon } from "../assets/icons";
-import formatBudget from "../helper/formatBudget";
 import { ArrowBack } from "@mui/icons-material";
+import formatBudget from "../helper/formatBudget";
 
 const DetailsPage = () => {
   const imageBaseUrl = "https://image.tmdb.org/t/p/original/";
   const params = useParams();
-  const [id, setId] = useState(params.id);
-  useEffect(() => {
-    setId(params.id);
-  }, [params.id]);
+  const id = params.id;
   const type = params.type;
   const navigate = useNavigate();
+
   const casts = {
     data: {
       results: useGetData(
@@ -161,7 +159,8 @@ const DetailsPage = () => {
           {casts && (
             <CardSlider dataType={"person"} data={casts} name={"Casts"} />
           )}
-          {similar && (
+
+          {similar?.data?.results && (
             <CardSlider dataType={type} data={similar} name={"Similar"} />
           )}
         </div>

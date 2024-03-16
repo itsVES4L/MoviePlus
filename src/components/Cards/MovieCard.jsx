@@ -4,9 +4,8 @@ import { Link } from "react-router-dom";
 
 const MovieCard = ({ movie, dataType, isBackdrop }) => {
   return (
-    <Link   to={`/details/${dataType}/${movie.id}`}>
+    <a href={`/details/${dataType}/${movie.id}`}>
       <div
-       
         className={`  ${
           isBackdrop ? "  bg-blackShade p-6 sm:p-0" : "bg-darkBlue"
         }  flex flex-col gap-3 items-center py-8 `}
@@ -24,7 +23,7 @@ const MovieCard = ({ movie, dataType, isBackdrop }) => {
           <h1>{movie?.title || movie?.name}</h1>
         </div>
       </div>
-    </Link>
+    </a>
   );
 };
 

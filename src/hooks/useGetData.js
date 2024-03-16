@@ -6,6 +6,7 @@ const useGetData = (queryKey, endPoint, params, staleTime = 30000) => {
     queryKey: [queryKey],
     queryFn: () => fetchData(endPoint, params),
     staleTime: staleTime,
+   
   });
   return { data, isLoading, isError, isFetching };
 };
