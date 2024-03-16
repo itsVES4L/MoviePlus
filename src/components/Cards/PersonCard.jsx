@@ -10,7 +10,7 @@ const PersonCard = ({ person }) => {
           <div
             className=" flex 
           sm:grid
-          justify-center items-center sm:w-[150px] w-[11vh] h-[11vh] sm:h-[150px] bg-white  overflow-hidden  rounded-full  "
+          justify-center items-center sm:w-[150px] w-[11vh] h-[11vh] sm:h-[150px]  overflow-hidden hover:border hover:border-green rounded-full  "
           >
             <img
               className=" cursor-pointer relative sm:bottom-3 h-[16vh+10px] sm:h-[34vh+10px]  "
@@ -18,6 +18,11 @@ const PersonCard = ({ person }) => {
               alt=""
             />
           </div>
+          {person?.known_for_department && (
+            <span className="px-[5px] text-[11px] text-center text-[#fffffffd] rounded-xl border border-[#62e262b2] bg-[#0080006e]">
+              {person.known_for_department}
+            </span>
+          )}
           <p className="hover:text-green text-[13px] cursor-pointer sm:text-[17px]  ">
             {person.name}
           </p>

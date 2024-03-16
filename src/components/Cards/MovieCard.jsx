@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Poster from "../common/Poster";
 import { Link } from "react-router-dom";
 
 const MovieCard = ({ movie, dataType, isBackdrop }) => {
   return (
-    <Link to={`/details/${dataType}/${movie.id}`}>
+    <Link   to={`/details/${dataType}/${movie.id}`}>
       <div
+       
         className={`  ${
           isBackdrop ? "  bg-blackShade p-6 sm:p-0" : "bg-darkBlue"
         }  flex flex-col gap-3 items-center py-8 `}

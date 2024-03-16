@@ -28,14 +28,13 @@ const CardSlider = ({ data, name, dataType, isBackdrop }) => {
         }}
         breakpoints={{
           768: {
-            slidesPerView: isBackdrop ? 2.20 : 3.5,
+            slidesPerView: isBackdrop ? 2.2 : 3.5,
           },
-          1024:{
-            slidesPerView: isBackdrop ? 2.20 : 5,
-          }
+          1024: {
+            slidesPerView: isBackdrop ? 2.2 : 5,
+          },
         }}
         slidesPerView={dataType === "person" ? 3 : isBackdrop ? 1 : 2}
-        
         spaceBetween={0}
         draggable={true}
         modules={[Pagination, Navigation, FreeMode]}
@@ -68,6 +67,7 @@ const CardSlider = ({ data, name, dataType, isBackdrop }) => {
           </div>
         </div>
         {/* Slides */}
+
         {data?.data?.results?.map((item) => {
           if (dataType === "movie") {
             return (
@@ -87,6 +87,7 @@ const CardSlider = ({ data, name, dataType, isBackdrop }) => {
                   movie={item}
                   dataType={dataType}
                   isBackdrop={isBackdrop}
+                
                 />
               </SwiperSlide>
             );

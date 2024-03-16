@@ -1,18 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useGetData } from "../hooks";
-import { Breadcrumbs, Loader } from "../components";
+import { Breadcrumbs, CardSlider, Loader } from "../components";
 
 import { playIcon } from "../assets/icons";
 import formatBudget from "../helper/formatBudget";
 import { ArrowBack } from "@mui/icons-material";
+
 const DetailsPage = () => {
   const imageBaseUrl = "https://image.tmdb.org/t/p/original/";
   const params = useParams();
-  const id = params.id;
+  const [id, setId] = useState(params.id);
+  useEffect(() => {
+    setId(params.id);
+  }, [params.id]);
   const type = params.type;
   const navigate = useNavigate();
-  // const budget = formatBudget(data.budget);
+  const casts = {
+    data: {
+      results: useGetData(
+        "movieCasts",
+        `${type}/${id}/credits`
+      ).data?.cast.slice(0, 40),
+    },
+  };
+  const similar = useGetData("Similar", `${type}/${id}/similar`);
   const { data, isFetching } = useGetData(
     "movieDetails",
     `${type}/${id}`,
@@ -25,16 +37,16 @@ const DetailsPage = () => {
   }
   if (data) {
     return (
-      <div className="bg-darkBlue w-screen h-screen absolute z-0 top-0 flex flex-col items-center ">
+      <div className="bg-darkBlue w-screen min-h-screen  flex flex-col items-center ">
         <button
           onClick={() => {
             navigate(-1);
           }}
-          className="absolute top-6 z-50  left-6 lg:hidden  rounded-xl p-3 text-center bg-[#9c9b9b50] backdrop-blur-sm  "
+          className="absolute top-6 z-50  left-4 lg:hidden  rounded-xl p-3 text-center bg-[#9c9b9b50] backdrop-blur-sm  "
         >
           <ArrowBack />
         </button>
-        <div className="absolute top-8 z-50 lg:left-[-60px] left-[5px] lg:block hidden">
+        <div className="absolute top-5 z-50 lg:left-[-80px] left-[-5px] lg:block hidden">
           <Breadcrumbs address={[type, data?.name || data?.title]} />
         </div>
         <div className="h-fit w-screen overflow-hidden relative flex flex-col items-center ">
@@ -49,6 +61,7 @@ const DetailsPage = () => {
             </div>
           </div>
         </div>
+        {/* Rating , Budget ,.... Boxes */}
         <div className="z-50  absolute lg:bottom-0 bottom-[10vh] md:bottom-[-30vh]   w-[80vw]  ">
           <div className="flex flex-col ">
             <h1 className="lg:text-[60px] text-[40px] leading-[0.75] font-[Staatliches] text-center lg:text-start ">
@@ -113,6 +126,44 @@ const DetailsPage = () => {
               <img className="lg:w-12 w-8" src={playIcon} />
             </div>
           </div>
+        </div>
+
+        {/*DESCRIPTION & COMPANIES  */}
+        <div className=" p-2 h-fit w-[80%] mt-[55vh] lg:mt-16  flex justify-between md:gap-8 flex-col lg:flex-row">
+          <div className=" min-h-[15vh] max-h-[30vh] w-[100%] lg:w-[70%] text-[#ffffff71] flex flex-col gap-2  ">
+            <h1 className="text-sm lg:text-lg">DESCRIPTION</h1>
+            <p className="text-white line-clamp-3 text-[12px] lg:text-sm ">
+              {data?.overview}
+            </p>
+          </div>
+
+          <div className="flex gap-2 md:mt-4 lg:w-[30%]  flex-col h-fit w-[100%] text-[#ffffff71]">
+            <h1 className="text-sm lg:text-lg">COMPANIES</h1>
+            <div
+              className=" grid justify-start  grid-cols-2 justify-items-center  items-center  lg:w-[18vw] 
+            w-[100%] overflow-hidden gap-2 max-h-[30vh] "
+            >
+              {data?.production_companies.slice(0, 5).map((company) => {
+                return (
+                  <img
+                    key={company.logo_path}
+                    src={imageBaseUrl + company.logo_path}
+                    className="
+                lg:h-[5vh] h-[40px] flex justify-center  lg:w-fit md:h-[8vh] p-[auto]
+                "
+                  />
+                );
+              })}
+            </div>
+          </div>
+        </div>
+        <div className="mt-8">
+          {casts && (
+            <CardSlider dataType={"person"} data={casts} name={"Casts"} />
+          )}
+          {similar && (
+            <CardSlider dataType={type} data={similar} name={"Similar"} />
+          )}
         </div>
       </div>
     );
