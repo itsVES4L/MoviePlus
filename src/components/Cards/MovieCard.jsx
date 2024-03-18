@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import Poster from "../common/Poster";
 import { Link } from "react-router-dom";
 
@@ -30,4 +30,4 @@ const MovieCard = ({ movie, dataType, isBackdrop }) => {
   );
 };
 
-export default MovieCard;
+export default memo(MovieCard);

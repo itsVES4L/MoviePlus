@@ -6,6 +6,7 @@ import CardSlider from "./Sliders/CardSlider";
 import MainSlider from "./Sliders/MainSlider";
 import Breadcrumbs from "./common/Breadcrumbs";
 import Poster from "./common/Poster";
+import VideoPlayer from "./common/VideoPlayer";
 
 export {
   MainSlider,
@@ -16,4 +17,5 @@ export {
   MovieRowCard,
   Loader,
   Breadcrumbs,
+  VideoPlayer,
 };

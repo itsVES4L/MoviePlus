@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import useGetData from "../../hooks/useGetData";
 import Poster from "../common/Poster";
 import StarIcon from "@mui/icons-material/StarRounded";
@@ -55,4 +55,4 @@ const MovieRowCard = ({ data, type }) => {
   );
 };
 
-export default MovieRowCard;
+export default memo(MovieRowCard);

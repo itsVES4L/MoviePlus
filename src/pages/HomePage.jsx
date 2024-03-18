@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { useGetData } from "../hooks";
 import { CardSlider, MainSlider } from "../components";
 import Loader from "../components/common/Loader";
@@ -29,7 +29,7 @@ const HomePage = () => {
           <MainSlider data={trendingMovieData} />
 
           <CardSlider
-            name={"Popular Movie"}
+            name={"Popular Movies"}
             data={popularMovie}
             dataType={"movie"}
           />
@@ -40,18 +40,18 @@ const HomePage = () => {
             isBackdrop={true}
           />
           <CardSlider
-            name={"Popular Series"}
+            name={"Popular Shows"}
             data={popularTV}
             dataType={"tv"}
           />
           <CardSlider
-            name={"Trending Series"}
+            name={"Trending Shows"}
             data={trendingTV}
             dataType={"tv"}
             isBackdrop={true}
           />
           <CardSlider
-            name={"Popular Person"}
+            name={"Popular People"}
             data={popularPerson}
             dataType={"person"}
           />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Link } from "react-router-dom";
 
 const PersonCard = ({ person }) => {
@@ -18,11 +18,11 @@ const PersonCard = ({ person }) => {
               alt=""
             />
           </div>
-          {person?.known_for_department && (
-            <span className="px-[5px] text-[11px] text-center text-[#fffffffd] rounded-xl border border-[#62e262b2] bg-[#0080006e]">
-              {person.known_for_department}
+          {
+            <span className="px-[5px] text-[9px] line-clamp-1  text-center text-[#fffffffd] rounded-xl border border-[#62e262b2] bg-[#0080006e]">
+              {person.character || person.known_for_department}
             </span>
-          )}
+          }
           <p className="hover:text-green text-[13px] cursor-pointer sm:text-[17px]  ">
             {person.name}
           </p>
@@ -32,4 +32,4 @@ const PersonCard = ({ person }) => {
   );
 };
 
-export default PersonCard;
+export default memo(PersonCard);

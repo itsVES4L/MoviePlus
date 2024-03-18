@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import MovieCard from "../Cards/MovieCard";
 import MovieRowCard from "../Cards/MovieRowCard";
 import PersonCard from "../Cards/PersonCard";
+import VideoPlayer from "../common/VideoPlayer";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Pagination } from "swiper/modules";
@@ -28,20 +29,30 @@ const CardSlider = ({ data, name, dataType, isBackdrop }) => {
         }}
         breakpoints={{
           768: {
-            slidesPerView: isBackdrop ? 2.2 : 3.5,
+            slidesPerView: isBackdrop || dataType === "trailer" ? 2.2 : 3.5,
           },
           1024: {
-            slidesPerView: isBackdrop ? 2.2 : 5,
+            slidesPerView: isBackdrop || dataType === "trailer" ? 2.2 : 5,
           },
         }}
-        slidesPerView={dataType === "person" ? 3 : isBackdrop ? 1 : 2}
-        spaceBetween={0}
+        slidesPerView={
+          dataType === "person"
+            ? 3
+            : isBackdrop || dataType === "trailer"
+            ? 1
+            : 2
+        }
+        spaceBetween={dataType === "trailer" ? 50 : 0}
         draggable={true}
         modules={[Pagination, Navigation, FreeMode]}
-        className={` flex justify-center h-fit w-[80vw] overflow-hidden ${
+        className={` flex justify-center items-center h-fit w-[80vw] overflow-hidden ${
           isBackdrop
-            ? "bg-blackShade sm:pt-20 sm:pb-14 pt-10 pb-0 rounded-xl"
+            ? "bg-blackShade sm:pt-20 sm:pb-14 pt-10 pb-0 pl-4 rounded-xl"
             : "pb-0 pt-10 "
+        } ${
+          isBackdrop &&
+          dataType === "trailer" &&
+          "mt-10 box-border  pb-[50px] pt-[60px] pr-[20px] pl-[20px]"
         }`}
       >
         <div
@@ -53,8 +64,10 @@ const CardSlider = ({ data, name, dataType, isBackdrop }) => {
           {/* Navigation buttons */}
           <div
             className={`flex gap-5  bg-[#141B1F] ${
-              isBackdrop && "hidden"
-            } p-1  rounded-2xl z-40 `}
+              isBackdrop && dataType !== "trailer" && "hidden"
+            }
+            ${isBackdrop && dataType === "trailer" && "block lg:mr-5 mr-6"}
+             p-1  rounded-2xl z-50 `}
           >
             <button className="prv-btn hover:bg-green w-7 h-7 sm:h-9 sm:w-9 p-0 sm:p-2 flex justify-center items-center rounded-full text-center  ">
               {" "}
@@ -69,35 +82,43 @@ const CardSlider = ({ data, name, dataType, isBackdrop }) => {
         {/* Slides */}
 
         {data?.data?.results?.map((item) => {
-          if (dataType === "movie") {
-            return (
-              <SwiperSlide key={item.id}>
-                <MovieCard
-                  movie={item}
-                  dataType={dataType}
-                  isBackdrop={isBackdrop}
-                />
-              </SwiperSlide>
-            );
-          }
-          if (dataType === "tv") {
-            return (
-              <SwiperSlide key={item.id}>
-                <MovieCard
-                  movie={item}
-                  dataType={dataType}
-                  isBackdrop={isBackdrop}
-                
-                />
-              </SwiperSlide>
-            );
-          }
-          if (dataType === "person") {
-            return (
-              <SwiperSlide key={item.id}>
-                <PersonCard person={item} dataType={dataType} />
-              </SwiperSlide>
-            );
+          switch (dataType) {
+            case "movie": {
+              return (
+                <SwiperSlide key={item.id}>
+                  <MovieCard
+                    movie={item}
+                    dataType={dataType}
+                    isBackdrop={isBackdrop}
+                  />
+                </SwiperSlide>
+              );
+            }
+            case "tv": {
+              return (
+                <SwiperSlide key={item.id}>
+                  <MovieCard
+                    movie={item}
+                    dataType={dataType}
+                    isBackdrop={isBackdrop}
+                  />
+                </SwiperSlide>
+              );
+            }
+            case "person": {
+              return (
+                <SwiperSlide key={item.id}>
+                  <PersonCard person={item} dataType={dataType} />
+                </SwiperSlide>
+              );
+            }
+            case "trailer": {
+              return (
+                <SwiperSlide key={item?.key}>
+                  <VideoPlayer trailerKey={item?.key} />
+                </SwiperSlide>
+              );
+            }
           }
         })}
       </Swiper>

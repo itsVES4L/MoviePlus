@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { useGetData } from "../../hooks";
 
 // Import Swiper React components
@@ -67,4 +67,4 @@ const MainSlider = ({ data }) => {
   );
 };
 
-export default MainSlider;
+export default memo(MainSlider);

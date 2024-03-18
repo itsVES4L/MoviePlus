@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 
 const Poster = ({ imageUrl, vote, bgColor }) => {
   const imageBaseUrl = "https://image.tmdb.org/t/p/original/";
@@ -24,4 +24,4 @@ const Poster = ({ imageUrl, vote, bgColor }) => {
   );
 };
 
-export default Poster;
+export default memo(Poster);

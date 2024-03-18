@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useGetData } from "../hooks";
 import { Breadcrumbs, CardSlider, Loader } from "../components";
@@ -6,14 +6,18 @@ import { Breadcrumbs, CardSlider, Loader } from "../components";
 import { playIcon } from "../assets/icons";
 import { ArrowBack } from "@mui/icons-material";
 import formatBudget from "../helper/formatBudget";
+import YouTube from "react-youtube";
 
 const DetailsPage = () => {
   const imageBaseUrl = "https://image.tmdb.org/t/p/original/";
+  const trailerRef = useRef(null);
+  const executeScroll = () => trailerRef.current.scrollIntoView();
   const params = useParams();
   const id = params.id;
   const type = params.type;
   const navigate = useNavigate();
-
+  const trailers = useGetData("trailers", `/${type}/${id}/videos`);
+  const [playTrailer, setPlayTrailer] = useState(false);
   const casts = {
     data: {
       results: useGetData(
@@ -35,7 +39,7 @@ const DetailsPage = () => {
   }
   if (data) {
     return (
-      <div className="bg-darkBlue w-screen min-h-screen  flex flex-col items-center ">
+      <div className="bg-darkBlue w-screen min-h-screen scroll-auto flex flex-col items-center ">
         <button
           onClick={() => {
             navigate(-1);
@@ -72,10 +76,10 @@ const DetailsPage = () => {
               >
                 {data?.genres.map((genre) => (
                   <span
-                    key={genre.id}
+                    key={genre?.id}
                     className="px-[5px] text-[10px]  lg:text-[15px] text-center text-[#fffffffd] rounded-lg border border-[#62e262b2] bg-[#0080006e]"
                   >
-                    {genre.name}
+                    {genre?.name}
                   </span>
                 ))}
               </div>
@@ -109,7 +113,7 @@ const DetailsPage = () => {
               <h1 className="lg:text-[40px] text-[30px] w-fit h-fit">
                 {data?.budget !== undefined
                   ? formatBudget(data?.budget)
-                  : data.number_of_episodes}
+                  : data?.number_of_episodes}
               </h1>
             </div>
             <div className="bg-[#ffffff15] backdrop-blur-[4px] flex-grow rounded-3xl  font-[Staatliches] md:h-[20vh]  lg:w-[15vw] lg:h-[20vh] w-[30vw] h-[10vh] flex justify-center items-center relative text-white lg:text-3xl ">
@@ -117,10 +121,13 @@ const DetailsPage = () => {
                 LENGTH
               </p>
               <h1 className="lg:text-[40px] text-[30px] w-fit h-fit ">
-                {data?.runtime || data.episode_run_time[0] || "?"}min
+                {data?.runtime || data?.episode_run_time[0] || "?"}min
               </h1>
             </div>
-            <div className="bg-green rounded-3xl lg:w-[15vw] lg:h-[20vh] w-[30vw] h-[10vh] flex  md:h-[20vh] flex-grow justify-center items-center relative text-white text-3xl ">
+            <div
+              onClick={executeScroll}
+              className="bg-green rounded-3xl cursor-pointer lg:w-[15vw] lg:h-[20vh] w-[30vw] h-[10vh] flex  md:h-[20vh] flex-grow justify-center items-center relative text-white text-3xl "
+            >
               <img className="lg:w-12 w-8" src={playIcon} />
             </div>
           </div>
@@ -138,10 +145,14 @@ const DetailsPage = () => {
           <div className="flex gap-2 md:mt-4 lg:w-[30%]  flex-col h-fit w-[100%] text-[#ffffff71]">
             <h1 className="text-sm lg:text-lg">COMPANIES</h1>
             <div
-              className=" grid justify-start  grid-cols-2 justify-items-center  items-center  lg:w-[18vw] 
-            w-[100%] overflow-hidden gap-2 max-h-[30vh] "
+              className={` grid justify-start  ${
+                data.production_companies.length > 1
+                  ? "grid-cols-2"
+                  : "grid-cols-1"
+              } justify-items-center  items-center  lg:w-[18vw] 
+            w-[100%] overflow-hidden gap-2 max-h-[30vh] `}
             >
-              {data?.production_companies.slice(0, 5).map((company) => {
+              {data?.production_companies?.slice(0, 5).map((company) => {
                 return (
                   <img
                     key={company.logo_path}
@@ -154,6 +165,14 @@ const DetailsPage = () => {
               })}
             </div>
           </div>
+        </div>
+        <div ref={trailerRef} className="trailer  overflow-hidden w-fit h-fit">
+          <CardSlider
+            isBackdrop={true}
+            name={"Trailers"}
+            dataType={"trailer"}
+            data={trailers}
+          />
         </div>
         <div className="mt-8">
           {casts && (

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import axios from "axios";
 import { MovieRowCard, Loader, Breadcrumbs } from "../components";
 import { Header } from "../layouts";
