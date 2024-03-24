@@ -6,11 +6,11 @@ const MovieCard = ({ movie, dataType, isBackdrop }) => {
   return (
     <Link
       onClick={() => location.replace()}
-      to={`/details/${dataType}/${movie.id}`}
+      to={`/${dataType}/${movie.id}`}
     >
       <div
         className={`  ${
-          isBackdrop ? "  bg-blackShade p-6 sm:p-0" : "bg-darkBlue"
+          isBackdrop ? "  bg-blackShade p-4 md:p-0 sm:p-0" : "bg-darkBlue"
         }  flex flex-col gap-3 items-center py-8 `}
       >
         <Poster

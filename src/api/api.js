@@ -1,12 +1,12 @@
 import axios from "axios";
 
 const fetchData = async (endPoint, params) => {
-  const token =
-    "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiMjZiZTAyYzBjOTVlNTU0YTExMzM2NGEyZDM2YTYzMiIsInN1YiI6IjY1YzVlMzc3NTM0NjYxMDE3YjhiNzkyYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.OQEweWswz1ey2eFuFOWc3mZdR2qxU9tW5UMjIl80dLU";
+  const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
+  const token =import.meta.env.VITE_API_KEY;
 
   const options = {
     method: "GET",
-    url: `https://api.themoviedb.org/3/${endPoint}`,
+    url: `${BASE_URL + endPoint}`,
     params: params,
     headers: {
       accept: "application/json",

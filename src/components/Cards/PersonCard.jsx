@@ -2,9 +2,9 @@ import React, { memo } from "react";
 import { Link } from "react-router-dom";
 
 const PersonCard = ({ person }) => {
-  const imageBaseUrl = "https://image.tmdb.org/t/p/original/";
+  const imageBaseUrl = import.meta.env.VITE_IMAGE_BASE_URL;
   return (
-    <Link to={`/details/${person.id}`}>
+    <Link onClick={() => location.replace()} to={`/person/${person.id}`}>
       <div className="  rounded-full mr-10   h-fit  sm:px-8 ">
         <div className="py-8 text-center pb-10 w-fit  flex flex-col  justify-center items-center gap-3   ">
           <div

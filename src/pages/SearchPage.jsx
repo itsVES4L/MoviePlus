@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useState } from "react";
 import axios from "axios";
-import { MovieRowCard, Loader, Breadcrumbs } from "../components";
+import { MovieRowCard, Loader, Breadcrumbs, PageNavigation } from "../components";
 import { Header } from "../layouts";
 
 const SearchPage = () => {
@@ -40,16 +40,13 @@ const SearchPage = () => {
     setData(result);
   };
 
+  console.log(data);
   useEffect(searchHandler, [movieName]);
 
   return (
     <div>
-      <Header />
-
-      <div className="ml-10">
-        <Breadcrumbs address={["Search"]} />
-      </div>
-      <div className="w-screen flex justify-center mt-4">
+     <PageNavigation address={["Search"]}/>
+      <div className="w-screen flex justify-center  mt-24 lg:mt-16">
         <input
           value={movieName}
           autoFocus
@@ -57,7 +54,7 @@ const SearchPage = () => {
           className=" backdrop:blur-xl focus
              bg-blackShade sm:p-3  p-2 pl-6 rounded-xl outline-none focus:outline-green  w-[80vw]"
           type="text"
-          placeholder="Search movie by name :"
+          placeholder="Search movie or people by name :"
         />
       </div>
       <div className="w-screen mt-20 flex justify-center ">

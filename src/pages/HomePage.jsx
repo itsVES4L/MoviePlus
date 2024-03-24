@@ -39,11 +39,7 @@ const HomePage = () => {
             dataType={"movie"}
             isBackdrop={true}
           />
-          <CardSlider
-            name={"Popular Shows"}
-            data={popularTV}
-            dataType={"tv"}
-          />
+          <CardSlider name={"Popular Shows"} data={popularTV} dataType={"tv"} />
           <CardSlider
             name={"Trending Shows"}
             data={trendingTV}

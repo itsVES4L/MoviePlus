@@ -1,7 +1,15 @@
 import Loader from "../components/common/Loader";
-import DetailsPage from "./DetailsPage";
+import MovieDetailsPage from "./MovieDetailsPage";
 import Error404Page from "./Error404Page";
 import HomePage from "./HomePage";
 import SearchPage from "./SearchPage";
+import PersonDetailsPage from "./PersonDetailsPage";
 
-export { SearchPage, HomePage, Loader, DetailsPage,Error404Page };
+export {
+  SearchPage,
+  HomePage,
+  Loader,
+  MovieDetailsPage,
+  Error404Page,
+  PersonDetailsPage,
+};

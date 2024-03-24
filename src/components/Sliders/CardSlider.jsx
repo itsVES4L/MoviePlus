@@ -18,7 +18,11 @@ import {
 
 const CardSlider = ({ data, name, dataType, isBackdrop }) => {
   return (
-    <div className="w-screen h-fit mt-2 ">
+    <div
+      className={`w-screen h-fit mt-2 ${
+        data?.data?.results?.length < 1 && "hidden"
+      } `}
+    >
       <Swiper
         navigation={{
           nextEl: ".nxt-btn",
@@ -29,10 +33,10 @@ const CardSlider = ({ data, name, dataType, isBackdrop }) => {
         }}
         breakpoints={{
           768: {
-            slidesPerView: isBackdrop || dataType === "trailer" ? 2.2 : 3.5,
+            slidesPerView: isBackdrop || dataType === "trailer" ? 1.04 : 2.5,
           },
           1024: {
-            slidesPerView: isBackdrop || dataType === "trailer" ? 2.2 : 5,
+            slidesPerView: isBackdrop || dataType === "trailer" ? 2.2 : 4.5,
           },
         }}
         slidesPerView={
@@ -42,12 +46,12 @@ const CardSlider = ({ data, name, dataType, isBackdrop }) => {
             ? 1
             : 2
         }
-        spaceBetween={dataType === "trailer" ? 50 : 0}
+        spaceBetween={40}
         draggable={true}
         modules={[Pagination, Navigation, FreeMode]}
-        className={` flex justify-center items-center h-fit w-[80vw] overflow-hidden ${
+        className={` flex justify-center items-center sm:pl-6 lg:pl-4 h-fit w-[80vw] overflow-hidden ${
           isBackdrop
-            ? "bg-blackShade sm:pt-20 sm:pb-14 pt-10 pb-0 pl-4 rounded-xl"
+            ? "bg-blackShade pr-7  sm:pt-20 sm:pb-14 pt-10 pb-0 sm:pl-8 rounded-xl"
             : "pb-0 pt-10 "
         } ${
           isBackdrop &&
@@ -63,7 +67,7 @@ const CardSlider = ({ data, name, dataType, isBackdrop }) => {
           <p className="font-bold sm:text-xl">{name}</p>
           {/* Navigation buttons */}
           <div
-            className={`flex gap-5  bg-[#141B1F] ${
+            className={`flex gap-5  bg-[#141B1F]  ${
               isBackdrop && dataType !== "trailer" && "hidden"
             }
             ${isBackdrop && dataType === "trailer" && "block lg:mr-5 mr-6"}
@@ -85,7 +89,7 @@ const CardSlider = ({ data, name, dataType, isBackdrop }) => {
           switch (dataType) {
             case "movie": {
               return (
-                <SwiperSlide key={item.id}>
+                <SwiperSlide className="ml-4 sm:ml-0" key={item.id}>
                   <MovieCard
                     movie={item}
                     dataType={dataType}
@@ -96,7 +100,7 @@ const CardSlider = ({ data, name, dataType, isBackdrop }) => {
             }
             case "tv": {
               return (
-                <SwiperSlide key={item.id}>
+                <SwiperSlide className="ml-2 sm:ml-0" key={item.id}>
                   <MovieCard
                     movie={item}
                     dataType={dataType}

@@ -5,6 +5,9 @@ import PersonCard from "./Cards/PersonCard";
 import CardSlider from "./Sliders/CardSlider";
 import MainSlider from "./Sliders/MainSlider";
 import Breadcrumbs from "./common/Breadcrumbs";
+import DetailsBox from "./common/DetailsBox";
+import Genres from "./common/Genres";
+import PageNavigation from "./common/PageNavigation";
 import Poster from "./common/Poster";
 import VideoPlayer from "./common/VideoPlayer";
 
@@ -18,4 +21,7 @@ export {
   Loader,
   Breadcrumbs,
   VideoPlayer,
+  DetailsBox,
+  Genres,
+  PageNavigation
 };

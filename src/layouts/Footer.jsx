@@ -1,6 +1,6 @@
 import React from "react";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import InstagramIcon from "@mui/icons-material/Instagram";
+import LinkedinIcon from "@mui/icons-material/LinkedIn";
 const Footer = () => {
   return (
     <div className=" w-screen rounded-tl-[10%]  bg-blackShade border-t border-[#8efaa086] sm:rounded-tr-[40%] rounded-tr-[10%] flex flex-col sm:flex-row justify-center items-center sm:justify-evenly z-40  ">
@@ -12,9 +12,9 @@ const Footer = () => {
               <GitHubIcon /> GitHub{" "}
             </div>
           </a>
-          <a className="text-white" href="www.instagram.com/whosvesal">
+          <a className="text-white" href="https://www.linkedin.com/in/itsVES4L">
             <div className="flex text-black justify-center items-center gap-1 p-2 rounded hover:text-white hover:bg-green font-bold bg-[#ffffff57]">
-              <InstagramIcon /> Instagram{" "}
+              <LinkedinIcon /> Linkedin{" "}
             </div>
           </a>
         </div>

@@ -35,8 +35,8 @@ const MainSlider = ({ data }) => {
         className="relative"
       >
         {data?.data?.results?.map((movie) => (
-          <SwiperSlide key={movie.id} className="w-screen sm:h-[90vh] ">
-            <Link to={`/details/${movie.media_type}/${movie.id}`}>
+          <SwiperSlide key={movie.id} className="w-screen lg:h-[90vh] ">
+            <Link to={`/${movie.media_type}/${movie.id}`}>
               <div
                 className="flex w-screen justify-center sm:block items-center sm:max-h-[90vh]
                     overflow-hidden relative"
@@ -51,7 +51,7 @@ const MainSlider = ({ data }) => {
                     {movie.title || movie.name}
                   </h1>
 
-                  <p className="sm:w-[40vw] w-[60vw]  sm:h-[70px] mt-2 sm:text-[15px] text-[10px] sm:line-clamp-3 line-clamp-2">
+                  <p className="sm:w-[40vw] w-[60vw]  sm:h-[70px] mt-2 sm:text-[15px] text-[10px] sm:line-clamp-3 line-clamp-2 text-justify">
                     {movie.overview}
                   </p>
                 </div>
