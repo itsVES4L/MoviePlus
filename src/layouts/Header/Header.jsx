@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import SearchIcon from "@mui/icons-material/Search";
 import styles from "./header.module.css";
 import { Link } from "react-router-dom";
 import { Logo } from "../../assets/icons";
