@@ -24,7 +24,7 @@ const Footer = () => {
         <div>
           {" "}
           <ul className="flex flex-col gap-2 ">
-            <li className="text-xl  w-fit ">Series</li>
+            <h1 className="text-xl  w-fit ">Shows</h1>
             <div className="flex flex-col gap-2 ml-0 text-sm  ">
               <li className="hover:text-white">Trending Shows</li>
               <li className="hover:text-white"> Popular Shows </li>
@@ -35,7 +35,7 @@ const Footer = () => {
         <div>
           {" "}
           <ul className="flex flex-col gap-2">
-            <li className="text-xl  ">Movies</li>
+            <h1 className="text-xl  ">Movies</h1>
             <div className="flex flex-col gap-2 ml-0 text-sm ">
               <li className="hover:text-white">Trending Movies</li>
               <li className="hover:text-white"> Popular Movies </li>

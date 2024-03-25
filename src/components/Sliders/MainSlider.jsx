@@ -17,7 +17,7 @@ const MainSlider = ({ data }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   return (
-    <div className="h-fit relative  bottom-[55px] sm:bottom-[70px]">
+    <div className="h-fit relative  bottom-[70px] sm:bottom-[70px]">
       <Swiper
         pagination={{
           dynamicBullets: true,

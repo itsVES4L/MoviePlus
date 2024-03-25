@@ -4,36 +4,96 @@ import styles from "./header.module.css";
 import { Link } from "react-router-dom";
 import { Logo } from "../../assets/icons";
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div
-      className={`w-screen flex items-center sticky top-0 justify-between sm:sticky z-10 py-2   ${styles.container}     rounded-b-3xl`}
+      className={`${styles.container}   rounded-b-3xl  navbar sticky sm:left-10 top-0  container z-10 `}
     >
-      {/* <--Logo--> */}
-      <Link
-        to={"/"}
-        className="w-fit z-30  text-[8px]   cursor-pointer sm:text-[15px]  sm:p-4  "
-      >
-        <img className="w-[120px] absolute z-40 top-1 sm:top-0 left-2 sm:w-[160px] " src={Logo} alt="" />
-      </Link>
-      {/* <-/-Logo--> */}
-      <Link
-        to={"/search"}
-        className="mr-3 sm:mr-10 cursor-pointer  rounded-lg relative flex  w-fit h-fit z-30  items-center "
-      >
-        <button
-          className=" w-12 h-8 flex justify-center sm:justify-start items-center sm:w-32
-         rounded-lg  text-center   hover:border
-          hover:border-green backdrop-blur-lg bg-[#2020208c] "
-        >
-          <SearchIcon className="p-1" />
-          <span
-            className=" hidden sm:block 
-          ml-6 text-[10px] text-[#8b7777]"
+      <div className="navbar-start">
+        <div className="dropdown">
+          <div
+            onClick={() => {
+              setIsOpen(!isOpen);
+            }}
+            tabIndex={0}
+            role="button"
+            className="btn btn-ghost btn-circle"
           >
-            Search
-          </span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h7"
+              />
+            </svg>
+          </div>
+          <ul
+            tabIndex={0}
+            className={`${
+              !isOpen && "hidden"
+            } menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100  rounded-box w-52`}
+          >
+            <li>
+              <Link to={"/search"}>Search</Link>
+            </li>
+            <li>
+              <Link>Movies</Link>
+            </li>
+            <li>
+              <Link>Shows</Link>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div className="navbar-center">
+        <Link
+          to={"/"}
+          className="w-fit z-30  text-[8px]   cursor-pointer sm:text-[15px]  sm:p-4  "
+        >
+          <img
+            className="w-[90px]  z-40 top-1   sm:w-[150px] "
+            src={Logo}
+            alt=""
+          />
+        </Link>
+      </div>
+      <div className="navbar-end">
+        <Link to={"/search"}>
+          <button className="btn btn-ghost btn-circle">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </button>
+        </Link>
+        <button className="btn btn-ghost btn-circle">
+          <div className="avatar">
+            <div className="w-8 mask mask-squircle">
+              <img
+                className="opacity-40 bg-[#ffffff6c] backdrop:blur-[15px]"
+                src="https://media.istockphoto.com/id/1223671392/vector/default-profile-picture-avatar-photo-placeholder-vector-illustration.jpg?s=612x612&w=0&k=20&c=s0aTdmT5aU6b8ot7VKm11DeID6NctRCpB755rA1BIP0="
+              />
+            </div>
+          </div>
         </button>
-      </Link>
+      </div>
     </div>
   );
 };

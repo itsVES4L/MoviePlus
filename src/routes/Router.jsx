@@ -11,7 +11,7 @@ import {
 const Router = () => {
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} />
+      <Route index path="/" element={<HomePage />} />
       <Route path="/search" element={<SearchPage />} />
       <Route path="/:type/:id" element={<MovieDetailsPage />} />
       <Route path="/person/:id" element={<PersonDetailsPage />} />

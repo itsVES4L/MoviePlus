@@ -8,23 +8,22 @@ const HomePage = () => {
   const popularMovie = useGetData("Popular Movies", "/movie/popular");
   const trendingMovie = useGetData("trending Movies", "/trending/movie/day");
 
-  const popularPerson = useGetData("Popular Person", "/person/popular");
+  const popularPeople = useGetData("Popular People", "/person/popular");
   const popularTV = useGetData("Popular TV", "/tv/popular");
   const trendingTV = useGetData("trending TV", "/trending/tv/day");
 
   const trendingMovieData = useGetData("trending", "/trending/all/day");
 
   if (
-    (trendingMovieData.isLoading &&
-      popularMovie.isLoading &&
-      popularTV.isLoading) ||
-    trendingMovieData.isError
+    trendingMovieData.isLoading &&
+    popularMovie.isLoading &&
+    popularTV.isLoading
   ) {
     return <Loader />;
   } else {
     return (
       <>
-        <div className="relative">
+        <div className="relative w-screen ">
           <Header />
           <MainSlider data={trendingMovieData} />
 
@@ -48,7 +47,7 @@ const HomePage = () => {
           />
           <CardSlider
             name={"Popular People"}
-            data={popularPerson}
+            data={popularPeople}
             dataType={"person"}
           />
         </div>

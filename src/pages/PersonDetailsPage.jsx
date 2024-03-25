@@ -41,8 +41,10 @@ const PersonDetailsPage = () => {
       <div className="lg:mt-20 lg:ml-10 flex flex-col  overflow-hidden  lg:flex-row gap-4 lg:w-[80%]">
         <div className="relative ">
           <img
-            className="h-auto lg:w-[30vw] lg:rounded-2xl"
-            src={imageBaseUrl + data?.profile_path}
+            className="h-auto lg:w-[30vw] sm:w-screen lg:rounded-2xl"
+            src={data.profile_path === null
+              ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyKpQUy8JP90MAZxFjU0P9bPqkUWL35fd8Ag&usqp=CAU"
+              : imageBaseUrl + data.profile_path}
             alt=""
           />
           <div class="absolute  bottom-0 inset-0 w-full h-full z-50 bg-gradient-to-b from-transparent to-darkBlue">

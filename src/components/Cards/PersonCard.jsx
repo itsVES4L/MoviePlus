@@ -13,8 +13,12 @@ const PersonCard = ({ person }) => {
           justify-center items-center sm:w-[150px] w-[11vh] h-[11vh] sm:h-[150px]  overflow-hidden hover:border hover:border-green rounded-full  "
           >
             <img
-              className=" cursor-pointer relative sm:bottom-3 h-[16vh+10px] sm:h-[34vh+10px]  "
-              src={imageBaseUrl + person.profile_path}
+              className={` cursor-pointer relative sm:bottom-3 ${person.profile_path === null ? 'w-[35vw] h-[12vh] sm:h-[42vh] lg:h-[26vh] ':"h-[16vh+10px] sm:h-[34vh+10px]"}   `}
+              src={
+                person.profile_path === null
+                  ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyKpQUy8JP90MAZxFjU0P9bPqkUWL35fd8Ag&usqp=CAU"
+                  : imageBaseUrl + person.profile_path
+              }
               alt=""
             />
           </div>
