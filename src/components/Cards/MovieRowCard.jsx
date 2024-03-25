@@ -13,7 +13,7 @@ const MovieRowCard = ({ data, type }) => {
   const genres = useGetGenres(dataType, data);
 
   return (
-    <Link to={`/${data.media_type}/${data.id}`}>
+    <Link    onClick={() => location.replace()} to={`/${data.media_type}/${data.id}`}>
       <div className="w-full sm:w-[80vw] h-fit rounded-xl relative bg-blackShade sm:p-5 p-7 flex flex-col sm:flex-row gap-8">
         <div className="w-full sm:w-fit flex justify-center">
           <Poster
