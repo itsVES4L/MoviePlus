@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowBack } from "@mui/icons-material";
 import Breadcrumbs from "./Breadcrumbs";
 
-const PageNavigation = ({address}) => {
+const PageNavigation = ({ address }) => {
   return (
     <>
       <Link

@@ -8,6 +8,7 @@ import Breadcrumbs from "./common/Breadcrumbs";
 import DetailsBox from "./common/DetailsBox";
 import Genres from "./common/Genres";
 import PageNavigation from "./common/PageNavigation";
+import PagePagination from "./common/PagePagination";
 import Poster from "./common/Poster";
 import VideoPlayer from "./common/VideoPlayer";
 
@@ -23,5 +24,6 @@ export {
   VideoPlayer,
   DetailsBox,
   Genres,
-  PageNavigation
+  PageNavigation,
+PagePagination
 };

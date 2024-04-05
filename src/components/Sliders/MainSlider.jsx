@@ -36,7 +36,7 @@ const MainSlider = ({ data }) => {
       >
         {data?.data?.results?.map((movie) => (
           <SwiperSlide key={movie.id} className="w-screen lg:h-[90vh] ">
-            <Link to={`/${movie.media_type}/${movie.id}`}>
+            <a href={`/${movie.media_type}/${movie.id}`}>
               <div
                 className="flex w-screen justify-center sm:block items-center sm:max-h-[90vh]
                     overflow-hidden relative"
@@ -59,7 +59,7 @@ const MainSlider = ({ data }) => {
               <div class="absolute inset-0 w-full h-full z-20 bg-gradient-to-b from-transparent to-darkBlue">
                 {" "}
               </div>
-            </Link>
+            </a>
           </SwiperSlide>
         ))}
       </Swiper>

@@ -6,8 +6,8 @@
 }
 @keyframes scrolling {
   to {
-    background-color: rgba(71, 64, 64, 0.582);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(20px);
+    background-color: #15191E;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 }

@@ -1,14 +1,17 @@
-import React, { memo, useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
+
 import {
   MovieRowCard,
   Loader,
-  Breadcrumbs,
   PageNavigation,
+  PagePagination,
 } from "../components";
+import { fetchData } from "../api/api";
 import { Header } from "../layouts";
 
 const SearchPage = () => {
+  const topRef = useRef(null);
+  const [page, setPage] = useState(1);
   const [movieName, setMovieName] = useState("");
   const [data, setData] = useState([]);
 
@@ -16,41 +19,26 @@ const SearchPage = () => {
     setMovieName(e.target.value);
   };
 
-  const searchHandler = () => {
-    const options = {
-      method: "GET",
-      url: "https://api.themoviedb.org/3/search/multi",
-      params: {
+  useEffect(() => {
+    const search = async () => {
+      const result = await fetchData("search/multi", {
         query: movieName,
-        include_adult: "true",
         language: "en-US",
-        page: "1",
-      },
-      headers: {
-        accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiMjZiZTAyYzBjOTVlNTU0YTExMzM2NGEyZDM2YTYzMiIsInN1YiI6IjY1YzVlMzc3NTM0NjYxMDE3YjhiNzkyYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.OQEweWswz1ey2eFuFOWc3mZdR2qxU9tW5UMjIl80dLU",
-      },
-    };
-
-    const result = axios
-      .request(options)
-      .then(function (response) {
-        setData(response.data);
-      })
-      .catch(function (error) {
-        console.error(error);
+        sort_by: "vote_count.desc",
+        page: page,
       });
-
-    setData(result);
-  };
-
-  useEffect(searchHandler, [movieName]);
+      setData(result);
+    };
+    search();
+  }, [movieName, page]);
 
   return (
     <div>
       <PageNavigation address={["Search"]} />
-      <div className="w-screen flex justify-center  mt-24 lg:mt-16">
+      <div
+        ref={topRef}
+        className="w-screen flex justify-center  mt-10 lg:mt-16"
+      >
         <input
           value={movieName}
           autoFocus
@@ -73,6 +61,17 @@ const SearchPage = () => {
             </div>
           )}
         </div>
+      </div>
+      <div className="mt-5">
+        {data?.results?.length > 1 && (
+          <PagePagination
+            handleChange={(event, value) => {
+              setPage(value);
+              topRef.current.scrollIntoView();
+            }}
+            pages={data.total_pages}
+          />
+        )}
       </div>
     </div>
   );

@@ -6,7 +6,9 @@ import {
   HomePage,
   MovieDetailsPage,
   SearchPage,
+  CategoryPage,
 } from "../pages";
+
 
 const Router = () => {
   return (
@@ -15,7 +17,7 @@ const Router = () => {
       <Route path="/search" element={<SearchPage />} />
       <Route path="/:type/:id" element={<MovieDetailsPage />} />
       <Route path="/person/:id" element={<PersonDetailsPage />} />
-
+      <Route path="/category/:type" element={<CategoryPage/>} />
       <Route path="*" element={<Error404Page />} />
     </Routes>
   );

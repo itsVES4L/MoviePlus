@@ -10,7 +10,7 @@ export default {
       colors: {
         green: "#3BA738",
         darkBlue: "#04151D",
-        blackShade: "#192025",
+        blackShade: "#15191E",
       },
       screens: {
         sm: "640px",
@@ -21,6 +21,6 @@ export default {
       },
     },
 
-    plugins: [require("daisyui")],
+    plugins: [require("daisyui"),require('tailwind-scrollbar')],
   },
 };

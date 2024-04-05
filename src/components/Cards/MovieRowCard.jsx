@@ -9,12 +9,12 @@ import Genres from "../common/Genres";
 
 const MovieRowCard = ({ data, type }) => {
   const dataType = data.media_type || type;
-
   const genres = useGetGenres(dataType, data);
 
   return (
-    <Link    onClick={() => location.replace()} to={`/${data.media_type}/${data.id}`}>
-      <div className="w-full sm:w-[80vw] h-fit rounded-xl relative bg-blackShade sm:p-5 p-7 flex flex-col sm:flex-row gap-8">
+    <a href={`/${dataType}/${data.id}`} >
+      
+      <div className="w-full sm:max-w-[80vw] h-fit rounded-xl relative bg-blackShade sm:p-5 p-7 flex flex-col sm:flex-row gap-8">
         <div className="w-full sm:w-fit flex justify-center">
           <Poster
             bgColor="bg-blackShade"
@@ -36,7 +36,7 @@ const MovieRowCard = ({ data, type }) => {
               {data?.vote_count || data?.known_for_department})
             </p>
           </div>
-          <div className="py-4 ml-1 sm:ml-0">
+          <div className="flex flex-col lg:items-start items-center py-4 ml-1 sm:ml-0">
             <p className="line-clamp-1 sm:w-[400px] w-[200px] text-[20px] sm:text-[35px]  font-bold">
               {data.name || data.title}
             </p>
@@ -44,14 +44,14 @@ const MovieRowCard = ({ data, type }) => {
               <Genres genres={genres} />
             </div>
             <div className="mt-4 overflow-hidden line-clamp-4">
-              <p className="text-[15px] w-[50vw]">
+              <p className="text-[15px] text-justify w-[50dvw]">
                 {data?.overview || data?.biography}
               </p>
             </div>
           </div>
         </div>
       </div>
-    </Link>
+    </a>
   );
 };
 

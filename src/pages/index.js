@@ -4,6 +4,7 @@ import Error404Page from "./Error404Page";
 import HomePage from "./HomePage";
 import SearchPage from "./SearchPage";
 import PersonDetailsPage from "./PersonDetailsPage";
+import CategoryPage from "./CategoryPage";
 
 export {
   SearchPage,
@@ -12,4 +13,5 @@ export {
   MovieDetailsPage,
   Error404Page,
   PersonDetailsPage,
+  CategoryPage,
 };

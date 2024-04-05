@@ -4,10 +4,7 @@ import { Link } from "react-router-dom";
 
 const MovieCard = ({ movie, dataType, isBackdrop }) => {
   return (
-    <Link
-      onClick={() => location.replace()}
-      to={`/${dataType}/${movie.id}`}
-    >
+    <a href={`/${dataType}/${movie.id}`}>
       <div
         className={`  ${
           isBackdrop ? "  bg-blackShade p-4 md:p-0 sm:p-0" : "bg-darkBlue"
@@ -26,7 +23,7 @@ const MovieCard = ({ movie, dataType, isBackdrop }) => {
           <h1>{movie?.title || movie?.name}</h1>
         </div>
       </div>
-    </Link>
+    </a>
   );
 };
 

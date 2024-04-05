@@ -12,6 +12,7 @@ import {
 
 import { playIcon } from "../assets/icons";
 import formatBudget from "../helper/formatBudget";
+import { Header } from "../layouts";
 
 const MovieDetailsPage = () => {
   const imageBaseUrl = import.meta.env.VITE_IMAGE_BASE_URL;
@@ -116,9 +117,9 @@ const MovieDetailsPage = () => {
 
         {/*DESCRIPTION & COMPANIES  */}
         <div className=" p-2 h-fit w-[80%] mt-[55vh] lg:mt-16  flex justify-between md:gap-8 flex-col lg:flex-row">
-          <div className=" min-h-[15vh] max-h-[30vh] w-[100%] lg:w-[70%] text-[#ffffff71] flex flex-col gap-2  ">
+          <div className=" min-h-fit max-h-[30vh] w-[100%] lg:w-[70%] text-[#ffffff71] flex flex-col gap-2  ">
             <h1 className="text-sm lg:text-lg">DESCRIPTION</h1>
-            <p className="text-white  text-[12px] lg:text-sm  text-justify">
+            <p className="text-white  text-[12px] lg:text-sm h-fit text-justify">
               {data?.overview}
             </p>
           </div>

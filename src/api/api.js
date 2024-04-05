@@ -1,10 +1,11 @@
+import { data } from "autoprefixer";
 import axios from "axios";
+const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
+const token = import.meta.env.VITE_API_KEY;
 
-const fetchData = async (endPoint, params) => {
-  const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
-  const token =import.meta.env.VITE_API_KEY;
+const options = (endPoint, params) => {
 
-  const options = {
+  return {
     method: "GET",
     url: `${BASE_URL + endPoint}`,
     params: params,
@@ -12,10 +13,13 @@ const fetchData = async (endPoint, params) => {
       accept: "application/json",
       Authorization: `Bearer ${token}`,
     },
-  };
+  }
+};
 
+
+const fetchData = (endPoint, params) => {
   const result = axios
-    .request(options)
+    .request(options(endPoint, params))
     .then(function (response) {
       return response.data;
     })
@@ -23,7 +27,8 @@ const fetchData = async (endPoint, params) => {
       console.error(error);
     });
 
-  return result;
+  return result
 };
+
 
 export { fetchData };
