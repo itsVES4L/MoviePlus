@@ -3,8 +3,6 @@
 
 # Movie+
 
-url:https://themovieplus.liara.run/
-
 Welcome to Movie+!
 
 Movie+ is a sleek and intuitive movie introduction app built with React.js and powered by the TMDB API.
@@ -23,6 +21,12 @@ Movie+ is a sleek and intuitive movie introduction app built with React.js and p
 - React Query
 - axios
 - swiper.js
+
+
+# Live Preview
+You can view a live preview of the app here:<br/>
+https://themovieplus.liara.run/
+<br/>
 
 ## Installation
 
