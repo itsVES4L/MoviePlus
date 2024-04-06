@@ -3,7 +3,7 @@
 
 # Movie+
 
-Welcome to Movie+!
+Welcome to Movie+ !
 
 Movie+ is a sleek and intuitive movie introduction app built with React.js and powered by the TMDB API.
 
