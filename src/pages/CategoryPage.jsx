@@ -1,10 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import {
-  Link,
-  useParams,
-  useSearchParams,
-  useNavigate,
-} from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import { Header } from "../layouts";
 import { useGetData } from "../hooks";
 import { Loader, MovieRowCard, PagePagination } from "../components";
@@ -17,7 +12,6 @@ const CategoryPage = () => {
   const path = searchParams.toString();
   const with_genre = searchParams.get("with_genre");
   const page = searchParams.get("page");
-
   const mediaType = searchParams.get("mediaType");
   const [activeGenreList, setActive] = useState(type);
 
@@ -35,7 +29,7 @@ const CategoryPage = () => {
       setMovieList(result);
     };
     search();
-  }, [page, with_genre]);
+  }, [page, with_genre, path]);
 
   const movieGenres = useGetData("movieGenresList", `genre/movie/list`);
   const showGenres = useGetData("tvGenresList", `genre/tv/list`);
@@ -95,9 +89,9 @@ const CategoryPage = () => {
           <div className="flex flex-wrap flex-grow w-full  justify-center items-center  bg-blackShade rounded-xl  gap-2">
             {genres?.data?.genres?.map((genre) => {
               return (
-                <a
-                  href={`/category/${mediaType}?${path}`}
-                  onClick={() => {
+                <Link
+                  to={`/category/${mediaType}?${path}`}
+                  onMouseDown={() => {
                     setSearchParams({
                       with_genre: genre.id,
                       page: 1,
@@ -108,7 +102,7 @@ const CategoryPage = () => {
                   className="px-[5px] hover:bg-[#4cda4c] grow text-[13px]  lg:text-[15px] text-center text-[#fffffffd] rounded-lg border border-[#62e262b2] bg-[#0080006e]"
                 >
                   {genre.name}
-                </a>
+                </Link>
               );
             })}
           </div>

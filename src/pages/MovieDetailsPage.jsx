@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useGetData } from "../hooks";
 import {
@@ -22,21 +22,33 @@ const MovieDetailsPage = () => {
   const media_id = params.id;
   const media_type = params.type;
 
-  const trailers = useGetData("trailers", `/${media_type}/${media_id}/videos`);
+  const trailers = useGetData(
+    "trailers",
+    `/${media_type}/${media_id}/videos`,
+    {},
+    0
+  );
 
   const casts = {
     data: {
       results: useGetData(
         "movieCasts",
-        `${media_type}/${media_id}/credits`
+        `${media_type}/${media_id}/credits`,
+        {},
+        0
       ).data?.cast.slice(0, 40),
     },
   };
-  const similar = useGetData("Similar", `${media_type}/${media_id}/similar`);
+  const similar = useGetData(
+    "Similar",
+    `${media_type}/${media_id}/similar`,
+    {},
+    0
+  );
   const { data, isFetching } = useGetData(
     "movieDetails",
     `${media_type}/${media_id}`,
-    [],
+    {},
     0
   );
 
@@ -119,7 +131,7 @@ const MovieDetailsPage = () => {
         <div className=" p-2 h-fit w-[80%] mt-[55vh] lg:mt-16  flex justify-between md:gap-8 flex-col lg:flex-row">
           <div className=" min-h-fit max-h-[30vh] w-[100%] lg:w-[70%] text-[#ffffff71] flex flex-col gap-2  ">
             <h1 className="text-sm lg:text-lg">DESCRIPTION</h1>
-            <p className="text-white  text-[12px] lg:text-sm h-fit text-justify">
+            <p className="text-white line-clamp-[12]  text-[12px] lg:text-sm h-fit text-justify">
               {data?.overview}
             </p>
           </div>

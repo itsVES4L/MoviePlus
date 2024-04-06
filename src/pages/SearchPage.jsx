@@ -7,7 +7,6 @@ import {
   PagePagination,
 } from "../components";
 import { fetchData } from "../api/api";
-import { Header } from "../layouts";
 
 const SearchPage = () => {
   const topRef = useRef(null);
@@ -37,7 +36,7 @@ const SearchPage = () => {
       <PageNavigation address={["Search"]} />
       <div
         ref={topRef}
-        className="w-screen flex justify-center  mt-10 lg:mt-16"
+        className="w-screen flex justify-center  mt-[10vh] lg:mt-16"
       >
         <input
           value={movieName}
@@ -52,8 +51,8 @@ const SearchPage = () => {
       <div className="w-screen mt-20 flex justify-center ">
         <div className="w-fit h-fit flex flex-col gap-10 ">
           {data.results ? (
-            data?.results?.map((item) => {
-              return <MovieRowCard data={item} />;
+            data?.results?.map((item, i) => {
+              return <MovieRowCard key={i} data={item} />;
             })
           ) : (
             <div className="w-screen  overflow-hidden">

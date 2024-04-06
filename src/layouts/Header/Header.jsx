@@ -41,13 +41,22 @@ const Header = () => {
               } menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100  rounded-box w-52`}
             >
               <li>
+                <Link to={"/"}>Home</Link>
+              </li>
+              <li>
                 <Link to={"/search"}>Search</Link>
               </li>
               <li>
-                <a href={`/category/movie?with_genre= &page=1&mediaType=movie`}>Movies</a>
+                <Link
+                  to={`/category/movie?with_genre=%20&page=1&mediaType=movie`}
+                >
+                  Movies
+                </Link>
               </li>
               <li>
-                <a href={"/category/tv?with_genre= &page=1&mediaType=tv"}>Shows</a>
+                <Link to={"/category/tv?with_genre=%20&page=1&mediaType=tv"}>
+                  Shows
+                </Link>
               </li>
             </ul>
           </div>

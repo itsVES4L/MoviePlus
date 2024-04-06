@@ -7,12 +7,9 @@ import { Header } from "../layouts";
 const HomePage = () => {
   const popularMovie = useGetData("Popular Movies", "/movie/popular");
   const trendingMovie = useGetData("trending Movies", "/trending/movie/day");
-
   const popularTV = useGetData("Popular TV", "/tv/popular");
   const trendingTV = useGetData("trending TV", "/trending/tv/day");
-
   const trendingPeople = useGetData("trending People", "/trending/person/week");
-
   const trendingMovieData = useGetData("trending", "/trending/all/day");
 
   if (
