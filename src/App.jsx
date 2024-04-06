@@ -1,7 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
-import { Header, Footer, Body } from "./layouts";
-import { useEffect, useState } from "react";
-import ScrollToTop from "./helper/ScrollToTop";
+import { Footer, Body } from "./layouts";
 
 function App() {
   return (
@@ -10,7 +7,6 @@ function App() {
     >
       <Body />
       <Footer />
-      <ScrollToTop />
     </div>
   );
 }
